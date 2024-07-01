@@ -49,6 +49,12 @@
 		836D5C0C2C316C3D000C7DDA /* McspicyShanghaiDeluxeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = McspicyShanghaiDeluxeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		836D5C102C316C3D000C7DDA /* McspicyShanghaiDeluxeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McspicyShanghaiDeluxeUITests.swift; sourceTree = "<group>"; };
 		836D5C122C316C3D000C7DDA /* McspicyShanghaiDeluxeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McspicyShanghaiDeluxeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		836D5C262C323BCD000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
+		836D5C282C323BDD000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
+		836D5C2A2C323C00000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
+		836D5C2C2C323C07000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
+		836D5C2F2C323C24000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
+		836D5C312C32451E000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +105,12 @@
 		836D5BEE2C316C3C000C7DDA /* McspicyShanghaiDeluxe */ = {
 			isa = PBXGroup;
 			children = (
-				836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */,
-				836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */,
+				836D5C2E2C323C1B000C7DDA /* Domain */,
+				836D5C222C31A38A000C7DDA /* Data */,
+				836D5C212C316D4A000C7DDA /* Network */,
+				836D5C202C316CD5000C7DDA /* Application */,
+				836D5C1F2C316CCF000C7DDA /* Presentation */,
+				836D5C232C323A98000C7DDA /* Preview Content */,
 				836D5BF32C316C3C000C7DDA /* ViewController.swift */,
 				836D5BF52C316C3C000C7DDA /* Main.storyboard */,
 				836D5BF82C316C3D000C7DDA /* Assets.xcassets */,
@@ -125,6 +135,72 @@
 				836D5C122C316C3D000C7DDA /* McspicyShanghaiDeluxeUITestsLaunchTests.swift */,
 			);
 			path = McspicyShanghaiDeluxeUITests;
+			sourceTree = "<group>";
+		};
+		836D5C1F2C316CCF000C7DDA /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C312C32451E000C7DDA /* placeholder */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		836D5C202C316CD5000C7DDA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */,
+				836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		836D5C212C316D4A000C7DDA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C282C323BDD000C7DDA /* placeholder */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		836D5C222C31A38A000C7DDA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C262C323BCD000C7DDA /* placeholder */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		836D5C232C323A98000C7DDA /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C252C323BA4000C7DDA /* Stubs */,
+				836D5C242C323B00000C7DDA /* RawData */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		836D5C242C323B00000C7DDA /* RawData */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C2C2C323C07000C7DDA /* placeholder */,
+			);
+			path = RawData;
+			sourceTree = "<group>";
+		};
+		836D5C252C323BA4000C7DDA /* Stubs */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C2A2C323C00000C7DDA /* placeholder */,
+			);
+			path = Stubs;
+			sourceTree = "<group>";
+		};
+		836D5C2E2C323C1B000C7DDA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C2F2C323C24000C7DDA /* placeholder */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
