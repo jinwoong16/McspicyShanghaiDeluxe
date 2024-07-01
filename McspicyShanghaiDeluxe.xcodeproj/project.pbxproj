@@ -53,7 +53,6 @@
 		836D5C282C323BDD000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C2A2C323C00000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C2C2C323C07000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
-		836D5C2F2C323C24000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C312C32451E000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,7 +197,6 @@
 		836D5C2E2C323C1B000C7DDA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				836D5C2F2C323C24000C7DDA /* placeholder */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
