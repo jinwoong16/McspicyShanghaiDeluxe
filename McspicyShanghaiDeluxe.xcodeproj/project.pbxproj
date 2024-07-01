@@ -18,6 +18,7 @@
 		836D5C132C316C3D000C7DDA /* McspicyShanghaiDeluxeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C122C316C3D000C7DDA /* McspicyShanghaiDeluxeUITestsLaunchTests.swift */; };
 		836D5C352C324BA2000C7DDA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C342C324BA2000C7DDA /* Currency.swift */; };
 		836D5C8D2C326D9C000C7DDA /* BigmacCalculatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C8C2C326D9C000C7DDA /* BigmacCalculatable.swift */; };
+		836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		836D5C312C32451E000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C342C324BA2000C7DDA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		836D5C8C2C326D9C000C7DDA /* BigmacCalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatable.swift; sourceTree = "<group>"; };
+		836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacIndex.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				836D5C342C324BA2000C7DDA /* Currency.swift */,
+				836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -357,6 +360,7 @@
 				836D5C352C324BA2000C7DDA /* Currency.swift in Sources */,
 				836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */,
 				836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */,
+				836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */,
 				836D5C8D2C326D9C000C7DDA /* BigmacCalculatable.swift in Sources */,
 				836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */,
 			);
