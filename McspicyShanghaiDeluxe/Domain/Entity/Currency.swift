@@ -11,6 +11,7 @@ struct Currency: Identifiable {
     let name: String
     let code: String
     let rate: Double
+    let country: Country
     
     var id: String { code }
 }
