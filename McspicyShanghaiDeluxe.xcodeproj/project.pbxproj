@@ -55,7 +55,6 @@
 		836D5C122C316C3D000C7DDA /* McspicyShanghaiDeluxeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McspicyShanghaiDeluxeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		836D5C262C323BCD000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C282C323BDD000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
-		836D5C2A2C323C00000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C2C2C323C07000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C342C324BA2000C7DDA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		836D5C8C2C326D9C000C7DDA /* BigmacCalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatable.swift; sourceTree = "<group>"; };
@@ -199,7 +198,6 @@
 		836D5C252C323BA4000C7DDA /* Stubs */ = {
 			isa = PBXGroup;
 			children = (
-				836D5C2A2C323C00000C7DDA /* placeholder */,
 			);
 			path = Stubs;
 			sourceTree = "<group>";
