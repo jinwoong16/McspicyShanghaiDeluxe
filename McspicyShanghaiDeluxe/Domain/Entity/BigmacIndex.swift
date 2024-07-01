@@ -13,5 +13,5 @@ struct BigmacIndex: Identifiable {
     let currencyCode: String
     let dollarPrice: Double
     
-    var id: String { isoCountryCode }
+    var id: String { currencyCode }
 }
