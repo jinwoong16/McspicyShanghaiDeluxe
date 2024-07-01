@@ -8,7 +8,7 @@
 import Foundation
 
 protocol BigmacCalculatable {
-    func exchange(_ money: String, to currencyId: Currency.ID) -> String
-    func countBigmacs(with dollarData: Double) -> Int
+    func exchange(_ money: Int, to currencyId: Currency.ID) -> Double
+    func countBigmacs(with exchangedMoney: Double, currencyId: Currency.ID) -> Int
     func getAvailableCurrencies() -> [Currency]
 }
