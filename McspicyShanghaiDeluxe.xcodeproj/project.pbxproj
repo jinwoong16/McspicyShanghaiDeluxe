@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04ACE9502C34462A00982106 /* baseCurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE94F2C34462A00982106 /* baseCurrencyTextField.swift */; };
+		04ACE9562C34488000982106 /* ConvertedAmountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */; };
+		04ACE9582C34491200982106 /* BigMacCountDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9572C34491200982106 /* BigMacCountDisplay.swift */; };
+		04ACE95A2C34498E00982106 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9592C34498E00982106 /* TooltipView.swift */; };
+		04ACE95C2C3449F300982106 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE95B2C3449F300982106 /* CurrencyViewController.swift */; };
 		836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */; };
 		836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */; };
 		836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF32C316C3C000C7DDA /* ViewController.swift */; };
@@ -41,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04ACE94F2C34462A00982106 /* baseCurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = baseCurrencyTextField.swift; sourceTree = "<group>"; };
+		04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertedAmountLabel.swift; sourceTree = "<group>"; };
+		04ACE9572C34491200982106 /* BigMacCountDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigMacCountDisplay.swift; sourceTree = "<group>"; };
+		04ACE9592C34498E00982106 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
+		04ACE95B2C3449F300982106 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		836D5BEC2C316C3C000C7DDA /* McspicyShanghaiDeluxe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McspicyShanghaiDeluxe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +72,6 @@
 		836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacIndex.swift; sourceTree = "<group>"; };
 		836D5C902C3274D1000C7DDA /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		836D5C992C32A931000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
-		836D5C9B2C32A939000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatorStub.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +100,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04ACE94E2C3444BC00982106 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				04ACE94F2C34462A00982106 /* baseCurrencyTextField.swift */,
+				04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */,
+				04ACE9572C34491200982106 /* BigMacCountDisplay.swift */,
+				04ACE9592C34498E00982106 /* TooltipView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		836D5BE32C316C3C000C7DDA = {
 			isa = PBXGroup;
 			children = (
@@ -235,7 +255,8 @@
 		836D5C972C32A820000C7DDA /* CurrencyView */ = {
 			isa = PBXGroup;
 			children = (
-				836D5C9B2C32A939000C7DDA /* placeholder */,
+				04ACE95B2C3449F300982106 /* CurrencyViewController.swift */,
+				04ACE94E2C3444BC00982106 /* Components */,
 			);
 			path = CurrencyView;
 			sourceTree = "<group>";
@@ -381,10 +402,15 @@
 			files = (
 				836D5C9E2C32DDD8000C7DDA /* BigmacCalculatorStub.swift in Sources */,
 				836D5C912C3274D1000C7DDA /* Country.swift in Sources */,
+				04ACE95A2C34498E00982106 /* TooltipView.swift in Sources */,
 				836D5C352C324BA2000C7DDA /* Currency.swift in Sources */,
+				04ACE9502C34462A00982106 /* baseCurrencyTextField.swift in Sources */,
+				04ACE9582C34491200982106 /* BigMacCountDisplay.swift in Sources */,
 				836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */,
+				04ACE9562C34488000982106 /* ConvertedAmountLabel.swift in Sources */,
 				836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */,
 				836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */,
+				04ACE95C2C3449F300982106 /* CurrencyViewController.swift in Sources */,
 				836D5C8D2C326D9C000C7DDA /* BigmacCalculatable.swift in Sources */,
 				836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */,
 			);
