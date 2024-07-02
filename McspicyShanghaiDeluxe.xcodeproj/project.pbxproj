@@ -18,6 +18,7 @@
 		833D02622C34263D003A1FB2 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D02612C34263D003A1FB2 /* Endpoint.swift */; };
 		833D02662C342822003A1FB2 /* URLSessionProtocolMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D02652C342822003A1FB2 /* URLSessionProtocolMock.swift */; };
 		833D02682C342875003A1FB2 /* ApiServiceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D02672C342875003A1FB2 /* ApiServiceStub.swift */; };
+		833D026A2C34293B003A1FB2 /* ApiServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D02692C34293B003A1FB2 /* ApiServiceTests.swift */; };
 		836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */; };
 		836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */; };
 		836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF32C316C3C000C7DDA /* ViewController.swift */; };
@@ -63,6 +64,7 @@
 		833D02612C34263D003A1FB2 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		833D02652C342822003A1FB2 /* URLSessionProtocolMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionProtocolMock.swift; sourceTree = "<group>"; };
 		833D02672C342875003A1FB2 /* ApiServiceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceStub.swift; sourceTree = "<group>"; };
+		833D02692C34293B003A1FB2 /* ApiServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceTests.swift; sourceTree = "<group>"; };
 		836D5BEC2C316C3C000C7DDA /* McspicyShanghaiDeluxe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McspicyShanghaiDeluxe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,7 +78,6 @@
 		836D5C0C2C316C3D000C7DDA /* McspicyShanghaiDeluxeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = McspicyShanghaiDeluxeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		836D5C102C316C3D000C7DDA /* McspicyShanghaiDeluxeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McspicyShanghaiDeluxeUITests.swift; sourceTree = "<group>"; };
 		836D5C122C316C3D000C7DDA /* McspicyShanghaiDeluxeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = McspicyShanghaiDeluxeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		836D5C262C323BCD000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C2C2C323C07000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C342C324BA2000C7DDA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		836D5C8C2C326D9C000C7DDA /* BigmacCalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatable.swift; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				833D02642C3427B5003A1FB2 /* Mocks */,
+				833D02692C34293B003A1FB2 /* ApiServiceTests.swift */,
 			);
 			path = ApiServiceTests;
 			sourceTree = "<group>";
@@ -262,7 +264,6 @@
 		836D5C222C31A38A000C7DDA /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				836D5C262C323BCD000C7DDA /* placeholder */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -490,6 +491,7 @@
 			files = (
 				833D02592C3417F6003A1FB2 /* RequestableTests.swift in Sources */,
 				833D02682C342875003A1FB2 /* ApiServiceStub.swift in Sources */,
+				833D026A2C34293B003A1FB2 /* ApiServiceTests.swift in Sources */,
 				836D5C072C316C3D000C7DDA /* McspicyShanghaiDeluxeTests.swift in Sources */,
 				833D02662C342822003A1FB2 /* URLSessionProtocolMock.swift in Sources */,
 				833D02562C3417BC003A1FB2 /* RequestableStub.swift in Sources */,
