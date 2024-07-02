@@ -30,14 +30,6 @@ final class RequestableTests: XCTestCase {
             ],
             method: .GET
         )
-    }
-
-    override func tearDownWithError() throws {
-        stub = nil
-    }
-    
-    func test_buildRequest() throws {
-        // given
         
         // when
         let result = try stub.buildRequest()
@@ -48,5 +40,24 @@ final class RequestableTests: XCTestCase {
         XCTAssertEqual("first=firstValue&second=secondValue", result.url?.query())
         XCTAssertNil(result.httpBody)
         XCTAssert(result.allHTTPHeaderFields!.isEmpty)
+    }
+    
+    func test_buildRequest_withInvalidURL_shouldThrowBadURL() throws {
+        // given
+        stub = RequestableStub(
+            baseURL: "",  // Bad url
+            path: "/latest",
+            queryItems: [
+                .init(name: "first", value: "firstValue"),
+                .init(name: "second", value: "secondValue")
+            ],
+            method: .GET
+        )
+        
+        // when
+        XCTAssertThrowsError(try stub.buildRequest()) { error in
+            // then
+            XCTAssertEqual(HttpError.badURL, error as! HttpError)
+        }
     }
 }
