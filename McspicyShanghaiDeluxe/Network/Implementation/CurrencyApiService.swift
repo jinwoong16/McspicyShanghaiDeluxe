@@ -1,5 +1,5 @@
 //
-//  DefaultApiService.swift
+//  CurrencyApiService.swift
 //  McspicyShanghaiDeluxe
 //
 //  Created by jinwoong Kim on 7/2/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DefaultApiService: ApiService {
+final class CurrencyApiService: ApiService {
     var session: URLSession
     
     init(session: URLSession = .shared) {
