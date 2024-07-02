@@ -60,4 +60,23 @@ final class RequestableTests: XCTestCase {
             XCTAssertEqual(HttpError.badURL, error as! HttpError)
         }
     }
+    
+    func test_buildRequest_withInvalidPath_shouldThrowBadComponents() throws {
+        // given
+        stub = RequestableStub(
+            baseURL: "https://example.com",
+            path: "...atest", // Bad path
+            queryItems: [
+                .init(name: "first", value: "firstValue"),
+                .init(name: "second", value: "secondValue")
+            ],
+            method: .GET
+        )
+        
+        // when
+        XCTAssertThrowsError(try stub.buildRequest()) { error in
+            // then
+            XCTAssertEqual(HttpError.badComponents, error as! HttpError)
+        }
+    }
 }
