@@ -25,7 +25,7 @@ final class BigmacCalculatorStub: BigmacCalculatable {
         ("달러", "SGD", 0.00098, "🇸🇬","싱가포르")
     ]
     
-    let localPrices = [
+    private let localPrices = [
         "노르웨이": 75.0,
         "말레이시아": 13.15,
         "미국": 5.69,
