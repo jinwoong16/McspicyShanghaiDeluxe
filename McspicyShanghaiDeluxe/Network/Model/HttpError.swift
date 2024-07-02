@@ -10,4 +10,6 @@ import Foundation
 enum HttpError: Error {
     case errorWith(code: Int, data: Data)
     case badResponse
+    case badURL
+    case badComponents
 }
