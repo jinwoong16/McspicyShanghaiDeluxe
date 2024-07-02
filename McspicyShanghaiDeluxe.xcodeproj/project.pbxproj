@@ -16,6 +16,10 @@
 		836D5C072C316C3D000C7DDA /* McspicyShanghaiDeluxeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C062C316C3D000C7DDA /* McspicyShanghaiDeluxeTests.swift */; };
 		836D5C112C316C3D000C7DDA /* McspicyShanghaiDeluxeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C102C316C3D000C7DDA /* McspicyShanghaiDeluxeUITests.swift */; };
 		836D5C132C316C3D000C7DDA /* McspicyShanghaiDeluxeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C122C316C3D000C7DDA /* McspicyShanghaiDeluxeUITestsLaunchTests.swift */; };
+		836D5C352C324BA2000C7DDA /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C342C324BA2000C7DDA /* Currency.swift */; };
+		836D5C8D2C326D9C000C7DDA /* BigmacCalculatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C8C2C326D9C000C7DDA /* BigmacCalculatable.swift */; };
+		836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */; };
+		836D5C912C3274D1000C7DDA /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C902C3274D1000C7DDA /* Country.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +57,12 @@
 		836D5C282C323BDD000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C2A2C323C00000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C2C2C323C07000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
-		836D5C2F2C323C24000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
-		836D5C312C32451E000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
+		836D5C342C324BA2000C7DDA /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
+		836D5C8C2C326D9C000C7DDA /* BigmacCalculatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatable.swift; sourceTree = "<group>"; };
+		836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacIndex.swift; sourceTree = "<group>"; };
+		836D5C902C3274D1000C7DDA /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		836D5C992C32A931000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
+		836D5C9B2C32A939000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,7 +148,8 @@
 		836D5C1F2C316CCF000C7DDA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				836D5C312C32451E000C7DDA /* placeholder */,
+				836D5C982C32A91E000C7DDA /* IndexView */,
+				836D5C972C32A820000C7DDA /* CurrencyView */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -198,9 +207,44 @@
 		836D5C2E2C323C1B000C7DDA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				836D5C2F2C323C24000C7DDA /* placeholder */,
+				836D5C8B2C326D8B000C7DDA /* Protocols */,
+				836D5C332C324B97000C7DDA /* Entity */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		836D5C332C324B97000C7DDA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C342C324BA2000C7DDA /* Currency.swift */,
+				836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */,
+				836D5C902C3274D1000C7DDA /* Country.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		836D5C8B2C326D8B000C7DDA /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C8C2C326D9C000C7DDA /* BigmacCalculatable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		836D5C972C32A820000C7DDA /* CurrencyView */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C9B2C32A939000C7DDA /* placeholder */,
+			);
+			path = CurrencyView;
+			sourceTree = "<group>";
+		};
+		836D5C982C32A91E000C7DDA /* IndexView */ = {
+			isa = PBXGroup;
+			children = (
+				836D5C992C32A931000C7DDA /* placeholder */,
+			);
+			path = IndexView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,8 +378,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				836D5C912C3274D1000C7DDA /* Country.swift in Sources */,
+				836D5C352C324BA2000C7DDA /* Currency.swift in Sources */,
 				836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */,
 				836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */,
+				836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */,
+				836D5C8D2C326D9C000C7DDA /* BigmacCalculatable.swift in Sources */,
 				836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
