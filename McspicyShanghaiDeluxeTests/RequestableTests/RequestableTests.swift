@@ -12,6 +12,15 @@ final class RequestableTests: XCTestCase {
     private var stub: (any Requestable)!
 
     override func setUpWithError() throws {
+        
+    }
+
+    override func tearDownWithError() throws {
+        stub = nil
+    }
+    
+    func test_buildRequest_withValidProperties_shouldPassAllCases() throws {
+        // given
         stub = RequestableStub(
             baseURL: "https://example.com",
             path: "/latest",
