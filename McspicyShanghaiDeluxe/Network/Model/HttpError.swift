@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum HttpError: Error {
+enum HttpError: Error, Equatable {
     case errorWith(code: Int, data: Data)
     case badResponse
     case badURL
