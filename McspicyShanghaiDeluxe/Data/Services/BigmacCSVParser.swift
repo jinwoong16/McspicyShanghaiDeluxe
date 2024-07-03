@@ -34,6 +34,7 @@ final class BigmacCSVParser {
                           let isoCode = row["iso_a3"] as? String,
                           let currencyCode = row["currency_code"] as? String,
                           let localPrice = row["local_price"] as? Double else {
+                        logger.debug("Missing row is \(row)")
                         return nil
                     }
                     return BigmacIndex(
