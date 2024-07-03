@@ -30,14 +30,18 @@ final class BigmacCSVParser {
             return dataFrame
                 .rows
                 .compactMap { row in
-                    if let countryName = row["Country"] as? String,
-                       let isoCode = row["iso_a3"] as? String,
-                       let currencyCode = row["currency_code"] as? String,
-                       let localPrice = row["local_price"] as? Double {
-                        return BigmacIndex(countryName: countryName, isoCountryCode: isoCode, currencyCode: currencyCode, localPrice: localPrice)
-                    } else {
+                    guard let countryName = row["Country"] as? String,
+                          let isoCode = row["iso_a3"] as? String,
+                          let currencyCode = row["currency_code"] as? String,
+                          let localPrice = row["local_price"] as? Double else {
                         return nil
                     }
+                    return BigmacIndex(
+                        countryName: countryName,
+                        isoCountryCode: isoCode,
+                        currencyCode: currencyCode,
+                        localPrice: localPrice
+                    )
                 }
         } catch {
             logger.error("Erro occured when csv parsing: \(error)")
