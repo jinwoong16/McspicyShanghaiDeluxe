@@ -36,6 +36,7 @@
 		836D5C912C3274D1000C7DDA /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C902C3274D1000C7DDA /* Country.swift */; };
 		836D5C9E2C32DDD8000C7DDA /* BigmacCalculatorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */; };
 		83980FD12C355F0D00C0CEB4 /* big-mac-2024-01-01.csv in Resources */ = {isa = PBXBuildFile; fileRef = 83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */; };
+		83980FD42C355FFF00C0CEB4 /* BigmacCSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83980FD32C355FFF00C0CEB4 /* BigmacCSVParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		836D5C9B2C32A939000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatorStub.swift; sourceTree = "<group>"; };
 		83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "big-mac-2024-01-01.csv"; sourceTree = "<group>"; };
+		83980FD32C355FFF00C0CEB4 /* BigmacCSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCSVParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 		836D5C222C31A38A000C7DDA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				83980FD22C355FD500C0CEB4 /* Services */,
 				83980FCF2C355EFE00C0CEB4 /* Resources */,
 				833D026B2C342AFA003A1FB2 /* DTO */,
 			);
@@ -359,6 +362,14 @@
 				83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		83980FD22C355FD500C0CEB4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				83980FD32C355FFF00C0CEB4 /* BigmacCSVParser.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -499,6 +510,7 @@
 				833D024E2C34127C003A1FB2 /* HttpError.swift in Sources */,
 				833D02622C34263D003A1FB2 /* Endpoint.swift in Sources */,
 				836D5C352C324BA2000C7DDA /* Currency.swift in Sources */,
+				83980FD42C355FFF00C0CEB4 /* BigmacCSVParser.swift in Sources */,
 				836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */,
 				833D02602C3425F1003A1FB2 /* CurrencyApiService.swift in Sources */,
 				833D024C2C3411F8003A1FB2 /* HttpMethod.swift in Sources */,
