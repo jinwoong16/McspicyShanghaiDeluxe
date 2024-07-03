@@ -30,6 +30,15 @@ final class BaseCurrencyView: UIView {
         baseCurrencyCountryLabel.translatesAutoresizingMaskIntoConstraints = false
         baseCurrencyTextField.translatesAutoresizingMaskIntoConstraints = false
         exchangeIcon.translatesAutoresizingMaskIntoConstraints = false
+        
+        baseCurrencyCountryLabel.text = "🇰🇷 대한민국"
+        baseCurrencyCountryLabel.textColor = .black
+        baseCurrencyCountryLabel.font = UIFont.systemFont(ofSize: 16)
+        
+        NSLayoutConstraint.activate([
+            baseCurrencyCountryLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            baseCurrencyCountryLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
+        ])
     }
 }
 
@@ -72,6 +81,8 @@ final class BaseCurrencyTextField: UITextField {
         
         baseCurrencySuffixLabel.translatesAutoresizingMaskIntoConstraints = false
     }
-    
-    
+}
+
+#Preview {
+    BaseCurrencyView()
 }
