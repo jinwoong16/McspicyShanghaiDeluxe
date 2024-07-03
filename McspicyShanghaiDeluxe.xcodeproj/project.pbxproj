@@ -37,6 +37,7 @@
 		836D5C9E2C32DDD8000C7DDA /* BigmacCalculatorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */; };
 		83980FD12C355F0D00C0CEB4 /* big-mac-2024-01-01.csv in Resources */ = {isa = PBXBuildFile; fileRef = 83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */; };
 		83980FD42C355FFF00C0CEB4 /* BigmacCSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83980FD32C355FFF00C0CEB4 /* BigmacCSVParser.swift */; };
+		83980FD72C3583DD00C0CEB4 /* BigmacCSVParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83980FD62C3583DD00C0CEB4 /* BigmacCSVParserTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatorStub.swift; sourceTree = "<group>"; };
 		83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "big-mac-2024-01-01.csv"; sourceTree = "<group>"; };
 		83980FD32C355FFF00C0CEB4 /* BigmacCSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCSVParser.swift; sourceTree = "<group>"; };
+		83980FD62C3583DD00C0CEB4 /* BigmacCSVParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCSVParserTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +236,7 @@
 		836D5C052C316C3D000C7DDA /* McspicyShanghaiDeluxeTests */ = {
 			isa = PBXGroup;
 			children = (
+				83980FD52C3583C400C0CEB4 /* BigmacCSVParserTests */,
 				833D02632C342715003A1FB2 /* ApiServiceTests */,
 				833D02542C341752003A1FB2 /* RequestableTests */,
 				836D5C062C316C3D000C7DDA /* McspicyShanghaiDeluxeTests.swift */,
@@ -370,6 +373,14 @@
 				83980FD32C355FFF00C0CEB4 /* BigmacCSVParser.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		83980FD52C3583C400C0CEB4 /* BigmacCSVParserTests */ = {
+			isa = PBXGroup;
+			children = (
+				83980FD62C3583DD00C0CEB4 /* BigmacCSVParserTests.swift */,
+			);
+			path = BigmacCSVParserTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,6 +543,7 @@
 				833D02592C3417F6003A1FB2 /* RequestableTests.swift in Sources */,
 				833D02682C342875003A1FB2 /* ApiServiceStub.swift in Sources */,
 				833D026A2C34293B003A1FB2 /* ApiServiceTests.swift in Sources */,
+				83980FD72C3583DD00C0CEB4 /* BigmacCSVParserTests.swift in Sources */,
 				836D5C072C316C3D000C7DDA /* McspicyShanghaiDeluxeTests.swift in Sources */,
 				833D02662C342822003A1FB2 /* URLSessionProtocolMock.swift in Sources */,
 				833D02562C3417BC003A1FB2 /* RequestableStub.swift in Sources */,
