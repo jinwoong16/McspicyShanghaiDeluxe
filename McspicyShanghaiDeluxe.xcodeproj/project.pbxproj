@@ -35,6 +35,7 @@
 		836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */; };
 		836D5C912C3274D1000C7DDA /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C902C3274D1000C7DDA /* Country.swift */; };
 		836D5C9E2C32DDD8000C7DDA /* BigmacCalculatorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */; };
+		83980FD12C355F0D00C0CEB4 /* big-mac-2024-01-01.csv in Resources */ = {isa = PBXBuildFile; fileRef = 83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		836D5C992C32A931000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C9B2C32A939000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatorStub.swift; sourceTree = "<group>"; };
+		83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "big-mac-2024-01-01.csv"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -277,6 +279,7 @@
 		836D5C222C31A38A000C7DDA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				83980FCF2C355EFE00C0CEB4 /* Resources */,
 				833D026B2C342AFA003A1FB2 /* DTO */,
 			);
 			path = Data;
@@ -348,6 +351,14 @@
 				836D5C992C32A931000C7DDA /* placeholder */,
 			);
 			path = IndexView;
+			sourceTree = "<group>";
+		};
+		83980FCF2C355EFE00C0CEB4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,6 +466,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				836D5BF92C316C3D000C7DDA /* Assets.xcassets in Resources */,
+				83980FD12C355F0D00C0CEB4 /* big-mac-2024-01-01.csv in Resources */,
 				836D5BFC2C316C3D000C7DDA /* Base in Resources */,
 				836D5BF72C316C3C000C7DDA /* Base in Resources */,
 			);
