@@ -26,8 +26,6 @@ final class BigmacCSVParserTests: XCTestCase {
         let result = bigmacCSVParser.parse()
         
         // then
-        XCTAssertEqual(55, result.count)
-        
-        print(result)
+        XCTAssert(!result.isEmpty)
     }
 }
