@@ -13,7 +13,7 @@ final class BigmacCalculator {
     private var bigmacIndexStore: any ModelStore<BigmacIndex> = AnyModelStore(models: [])
     private var currencyStore: any ModelStore<Currency> = AnyModelStore(models: [])
     
-    private var updateUIEvent = PassthroughSubject<Void, Never>()
+    private var updateUIEvent = CurrentValueSubject<Bool, Never>(false)
     
     private let logger: Logger
     
@@ -25,7 +25,7 @@ final class BigmacCalculator {
         Task {
             self.bigmacIndexStore = factory.buildBigmacIndexStore()
             self.currencyStore = await factory.buildCurrencyStore()
-            self.updateUIEvent.send(())
+            self.updateUIEvent.send(true)
         }
     }
 }
@@ -51,7 +51,7 @@ extension BigmacCalculator: BigmacCalculatable {
         currencyStore.fetchAll()
     }
     
-    func readyToUpdateUI() -> AnyPublisher<Void, Never> {
+    func readyToUpdateUI() -> AnyPublisher<Bool, Never> {
         updateUIEvent.eraseToAnyPublisher()
     }
 }
