@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol ModelStore {
+protocol ModelStore<Model> {
     associatedtype Model: Identifiable
     
     func fetch(by id: Model.ID) -> Model?
