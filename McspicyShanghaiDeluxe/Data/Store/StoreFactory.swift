@@ -33,8 +33,15 @@ final class StoreFactory {
     }
     
     func buildCurrencyStore() async -> some ModelStore<Currency> {
-        let bigmacIndices = bigmacCSVParser.parse()
-        let allCurrencyCodes = bigmacIndices.map { $0.currencyCode }.joined(separator: ",")
+        guard let bigmacIndexStore else {
+            logger.debug("No pared bigmac index data.")
+            return AnyModelStore(models: [])
+        }
+        
+        let allCurrencyCodes = bigmacIndexStore
+            .fetchAll()
+            .map { $0.currencyCode }
+            .joined(separator: ",")
         
         let endpoint: Endpoint<CurrencyDTO> = Endpoint(
             baseURL: "https://api.frankfurter.app",
