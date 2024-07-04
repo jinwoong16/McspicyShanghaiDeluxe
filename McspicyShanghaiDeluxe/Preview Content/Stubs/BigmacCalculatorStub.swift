@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 final class BigmacCalculatorStub: BigmacCalculatable {
     private let rawData = [
@@ -81,4 +82,10 @@ final class BigmacCalculatorStub: BigmacCalculatable {
     func getAvailableCurrencies() -> [Currency] {
         currencies
     }
+    
+    func readyToUpdateUI() -> AnyPublisher<Bool, Never> {
+            Just(true)
+                .delay(for: .seconds(2), scheduler: RunLoop.main)
+                .eraseToAnyPublisher()
+        }
 }
