@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04ACEA2E2C36F30000982106 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACEA2D2C36F30000982106 /* Colors.swift */; };
+		04ACEA302C36F30700982106 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACEA2F2C36F30700982106 /* Fonts.swift */; };
+		04ACEA3B2C3701D200982106 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA3A2C3701D200982106 /* Inter-ExtraLight.ttf */; };
+		04ACEA3C2C3701D200982106 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA3A2C3701D200982106 /* Inter-ExtraLight.ttf */; };
+		04ACEA3D2C3701D200982106 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA3A2C3701D200982106 /* Inter-ExtraLight.ttf */; };
+		04ACEA3F2C3701DB00982106 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA3E2C3701DB00982106 /* Inter-Light.ttf */; };
+		04ACEA402C3701DB00982106 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA3E2C3701DB00982106 /* Inter-Light.ttf */; };
+		04ACEA412C3701DB00982106 /* Inter-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA3E2C3701DB00982106 /* Inter-Light.ttf */; };
+		04ACEA432C3701E600982106 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA422C3701E600982106 /* Inter-Regular.ttf */; };
+		04ACEA442C3701E600982106 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA422C3701E600982106 /* Inter-Regular.ttf */; };
+		04ACEA452C3701E600982106 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA422C3701E600982106 /* Inter-Regular.ttf */; };
 		833D024C2C3411F8003A1FB2 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D024B2C3411F8003A1FB2 /* HttpMethod.swift */; };
 		833D024E2C34127C003A1FB2 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D024D2C34127C003A1FB2 /* HttpError.swift */; };
 		833D02512C3412E3003A1FB2 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D02502C3412E3003A1FB2 /* Requestable.swift */; };
@@ -55,6 +66,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04ACEA2D2C36F30000982106 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		04ACEA2F2C36F30700982106 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		04ACEA3A2C3701D200982106 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
+		04ACEA3E2C3701DB00982106 /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
+		04ACEA422C3701E600982106 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		833D024B2C3411F8003A1FB2 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		833D024D2C34127C003A1FB2 /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
 		833D02502C3412E3003A1FB2 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
@@ -117,6 +133,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04ACEA2B2C36F2D400982106 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				04ACEA312C36F5F100982106 /* Fonts */,
+				04ACEA2D2C36F30000982106 /* Colors.swift */,
+				04ACEA2F2C36F30700982106 /* Fonts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		04ACEA312C36F5F100982106 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				04ACEA3E2C3701DB00982106 /* Inter-Light.ttf */,
+				04ACEA3A2C3701D200982106 /* Inter-ExtraLight.ttf */,
+				04ACEA422C3701E600982106 /* Inter-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		833D024A2C3411B4003A1FB2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,6 +285,7 @@
 		836D5C1F2C316CCF000C7DDA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				04ACEA2B2C36F2D400982106 /* Extensions */,
 				836D5C982C32A91E000C7DDA /* IndexView */,
 				836D5C972C32A820000C7DDA /* CurrencyView */,
 			);
@@ -454,9 +491,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04ACEA3F2C3701DB00982106 /* Inter-Light.ttf in Resources */,
 				836D5BF92C316C3D000C7DDA /* Assets.xcassets in Resources */,
 				836D5BFC2C316C3D000C7DDA /* Base in Resources */,
 				836D5BF72C316C3C000C7DDA /* Base in Resources */,
+				04ACEA432C3701E600982106 /* Inter-Regular.ttf in Resources */,
+				04ACEA3B2C3701D200982106 /* Inter-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +504,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04ACEA402C3701DB00982106 /* Inter-Light.ttf in Resources */,
+				04ACEA442C3701E600982106 /* Inter-Regular.ttf in Resources */,
+				04ACEA3C2C3701D200982106 /* Inter-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,6 +514,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04ACEA412C3701DB00982106 /* Inter-Light.ttf in Resources */,
+				04ACEA452C3701E600982106 /* Inter-Regular.ttf in Resources */,
+				04ACEA3D2C3701D200982106 /* Inter-ExtraLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +530,7 @@
 				836D5C9E2C32DDD8000C7DDA /* BigmacCalculatorStub.swift in Sources */,
 				836D5C912C3274D1000C7DDA /* Country.swift in Sources */,
 				833D025B2C3424B1003A1FB2 /* Responsable.swift in Sources */,
+				04ACEA2E2C36F30000982106 /* Colors.swift in Sources */,
 				833D024E2C34127C003A1FB2 /* HttpError.swift in Sources */,
 				833D02622C34263D003A1FB2 /* Endpoint.swift in Sources */,
 				836D5C352C324BA2000C7DDA /* Currency.swift in Sources */,
@@ -496,6 +543,7 @@
 				836D5C8D2C326D9C000C7DDA /* BigmacCalculatable.swift in Sources */,
 				833D02512C3412E3003A1FB2 /* Requestable.swift in Sources */,
 				833D026D2C342B06003A1FB2 /* CurrencyDTO.swift in Sources */,
+				04ACEA302C36F30700982106 /* Fonts.swift in Sources */,
 				836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
