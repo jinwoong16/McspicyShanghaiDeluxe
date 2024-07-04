@@ -23,6 +23,7 @@
 		833D026F2C34452E003A1FB2 /* CurrencyDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D026E2C34452E003A1FB2 /* CurrencyDataMock.swift */; };
 		836151E12C36654C00F417E9 /* Sequence+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E02C36654C00F417E9 /* Sequence+.swift */; };
 		836151E32C3684F700F417E9 /* StoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E22C3684F700F417E9 /* StoreFactory.swift */; };
+		836151E62C36856C00F417E9 /* StoreFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E52C36856C00F417E9 /* StoreFactoryTests.swift */; };
 		836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */; };
 		836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */; };
 		836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF32C316C3C000C7DDA /* ViewController.swift */; };
@@ -78,6 +79,7 @@
 		833D026E2C34452E003A1FB2 /* CurrencyDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataMock.swift; sourceTree = "<group>"; };
 		836151E02C36654C00F417E9 /* Sequence+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+.swift"; sourceTree = "<group>"; };
 		836151E22C3684F700F417E9 /* StoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFactory.swift; sourceTree = "<group>"; };
+		836151E52C36856C00F417E9 /* StoreFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFactoryTests.swift; sourceTree = "<group>"; };
 		836D5BEC2C316C3C000C7DDA /* McspicyShanghaiDeluxe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McspicyShanghaiDeluxe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -211,6 +213,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		836151E42C36855C00F417E9 /* StoreFactoryTests */ = {
+			isa = PBXGroup;
+			children = (
+				836151E52C36856C00F417E9 /* StoreFactoryTests.swift */,
+			);
+			path = StoreFactoryTests;
+			sourceTree = "<group>";
+		};
 		836D5BE32C316C3C000C7DDA = {
 			isa = PBXGroup;
 			children = (
@@ -252,6 +262,7 @@
 		836D5C052C316C3D000C7DDA /* McspicyShanghaiDeluxeTests */ = {
 			isa = PBXGroup;
 			children = (
+				836151E42C36855C00F417E9 /* StoreFactoryTests */,
 				83980FD52C3583C400C0CEB4 /* BigmacCSVParserTests */,
 				833D02632C342715003A1FB2 /* ApiServiceTests */,
 				833D02542C341752003A1FB2 /* RequestableTests */,
@@ -571,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				836151E62C36856C00F417E9 /* StoreFactoryTests.swift in Sources */,
 				833D026F2C34452E003A1FB2 /* CurrencyDataMock.swift in Sources */,
 				833D02592C3417F6003A1FB2 /* RequestableTests.swift in Sources */,
 				833D02682C342875003A1FB2 /* ApiServiceStub.swift in Sources */,
