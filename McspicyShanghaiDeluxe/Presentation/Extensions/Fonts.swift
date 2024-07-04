@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 struct Fonts {
-    let InterLight: String = "Inter-Light"
-    let InterExtraLight: String = "Inter-ExtraLight"
-    let InterRegular: String = "Inter-Regular"
+    static let interLight: String = "Inter-Light"
+    static let interExtraLight: String = "Inter-ExtraLight"
+    static let interRegular: String = "Inter-Regular"
 }

@@ -51,21 +51,18 @@ extension UITabBarController {
         
         tabBar.insertSubview(blurEffectView, at: 0)
         
-        if #available(iOS 13.0, *) {
-            let appearance = UITabBarAppearance()
-            appearance.configureWithDefaultBackground()
-            appearance.backgroundEffect = blurEffect
-            
-            appearance.stackedLayoutAppearance.selected.iconColor = UIColor.secondaryTextColor
-            appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.secondaryTextColor]
-            
-            appearance.stackedLayoutAppearance.normal.iconColor = UIColor.unselectedIcon
-            appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.unselectedIcon]
-            
-            tabBar.standardAppearance = appearance
-            if #available(iOS 15.0, *) {
-                tabBar.scrollEdgeAppearance = appearance
-            }
-        }
+        let appearance = UITabBarAppearance()
+        appearance.configureWithDefaultBackground()
+        appearance.backgroundEffect = blurEffect
+        
+        appearance.stackedLayoutAppearance.selected.iconColor = UIColor.secondaryTextColor
+        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.secondaryTextColor]
+        
+        appearance.stackedLayoutAppearance.normal.iconColor = UIColor.unselectedIcon
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.unselectedIcon]
+        
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
+        
     }
 }
