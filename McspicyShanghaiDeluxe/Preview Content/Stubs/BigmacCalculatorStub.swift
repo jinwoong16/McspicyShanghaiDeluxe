@@ -90,10 +90,4 @@ final class BigmacCalculatorStub: BigmacCalculatable {
             .delay(for: .seconds(2), scheduler: RunLoop.main)
             .eraseToAnyPublisher()
     }
-    
-    func readyToUpdateUI() -> AnyPublisher<Bool, Never> {
-            Just(true)
-                .delay(for: .seconds(2), scheduler: RunLoop.main)
-                .eraseToAnyPublisher()
-        }
 }

@@ -68,8 +68,7 @@ final class StoreFactory {
     }
     
     private func transform(_ currencyRateDto: CurrencyRateDTO) -> [Country] {
-        guard let bigmacIndexStore,
-              let bigmacIndices = isoCodeMapper[currencyRateDto.code] else {
+        guard let bigmacIndices = isoCodeMapper[currencyRateDto.code] else {
             return []
         }
         
