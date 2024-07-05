@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import Combine
 
 protocol BigmacCalculatable {
-    func exchange(_ money: Int, to currencyId: Currency.ID) -> Double
-    func countBigmacs(with exchangedMoney: Double, currencyId: Currency.ID) -> Int
-    func getAvailableCurrencies() -> [Currency]
+    func exchange(_ money: Int, to countryId: Country.ID) -> Double
+    func countBigmacs(with exchangedMoney: Double, countryId: Country.ID) -> Int
+    func getAvailableCountries() -> [Country]
+    func readyToUpdateUI() -> AnyPublisher<Bool, Never>
 }
