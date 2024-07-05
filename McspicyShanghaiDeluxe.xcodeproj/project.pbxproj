@@ -12,6 +12,7 @@
 		04ACE9582C34491200982106 /* BigMacCountDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9572C34491200982106 /* BigMacCountDisplay.swift */; };
 		04ACE95A2C34498E00982106 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9592C34498E00982106 /* TooltipView.swift */; };
 		04ACE95C2C3449F300982106 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE95B2C3449F300982106 /* CurrencyViewController.swift */; };
+		04ACEA952C38251900982106 /* BaseCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACEA942C38251900982106 /* BaseCurrencyView.swift */; };
 		836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */; };
 		836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */; };
 		836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF32C316C3C000C7DDA /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 		04ACE9572C34491200982106 /* BigMacCountDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigMacCountDisplay.swift; sourceTree = "<group>"; };
 		04ACE9592C34498E00982106 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
 		04ACE95B2C3449F300982106 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
+		04ACEA942C38251900982106 /* BaseCurrencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCurrencyView.swift; sourceTree = "<group>"; };
 		836D5BEC2C316C3C000C7DDA /* McspicyShanghaiDeluxe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McspicyShanghaiDeluxe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 		04ACE94E2C3444BC00982106 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				04ACEA942C38251900982106 /* BaseCurrencyView.swift */,
 				04ACE94F2C34462A00982106 /* baseCurrencyTextField.swift */,
 				04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */,
 				04ACE9572C34491200982106 /* BigMacCountDisplay.swift */,
@@ -408,6 +411,7 @@
 				04ACE9582C34491200982106 /* BigMacCountDisplay.swift in Sources */,
 				836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */,
 				04ACE9562C34488000982106 /* ConvertedAmountLabel.swift in Sources */,
+				04ACEA952C38251900982106 /* BaseCurrencyView.swift in Sources */,
 				836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */,
 				836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */,
 				04ACE95C2C3449F300982106 /* CurrencyViewController.swift in Sources */,
