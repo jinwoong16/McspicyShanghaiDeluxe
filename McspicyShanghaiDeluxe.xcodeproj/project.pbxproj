@@ -25,6 +25,7 @@
 		836151E32C3684F700F417E9 /* StoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E22C3684F700F417E9 /* StoreFactory.swift */; };
 		836151E62C36856C00F417E9 /* StoreFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E52C36856C00F417E9 /* StoreFactoryTests.swift */; };
 		836151E92C36BC2D00F417E9 /* BigmacCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E82C36BC2D00F417E9 /* BigmacCalculatorTests.swift */; };
+		836151ED2C3707FD00F417E9 /* big-mac-2024-01-01.csv in Resources */ = {isa = PBXBuildFile; fileRef = 836151EC2C3707FD00F417E9 /* big-mac-2024-01-01.csv */; };
 		836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */; };
 		836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */; };
 		836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF32C316C3C000C7DDA /* ViewController.swift */; };
@@ -39,7 +40,6 @@
 		836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C8E2C326F37000C7DDA /* BigmacIndex.swift */; };
 		836D5C912C3274D1000C7DDA /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C902C3274D1000C7DDA /* Country.swift */; };
 		836D5C9E2C32DDD8000C7DDA /* BigmacCalculatorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */; };
-		83980FD12C355F0D00C0CEB4 /* big-mac-2024-01-01.csv in Resources */ = {isa = PBXBuildFile; fileRef = 83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */; };
 		83980FD42C355FFF00C0CEB4 /* BigmacCSVParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83980FD32C355FFF00C0CEB4 /* BigmacCSVParser.swift */; };
 		83980FD72C3583DD00C0CEB4 /* BigmacCSVParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83980FD62C3583DD00C0CEB4 /* BigmacCSVParserTests.swift */; };
 		83980FD92C365E6200C0CEB4 /* BigmacCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83980FD82C365E6200C0CEB4 /* BigmacCalculator.swift */; };
@@ -82,6 +82,7 @@
 		836151E22C3684F700F417E9 /* StoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFactory.swift; sourceTree = "<group>"; };
 		836151E52C36856C00F417E9 /* StoreFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFactoryTests.swift; sourceTree = "<group>"; };
 		836151E82C36BC2D00F417E9 /* BigmacCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatorTests.swift; sourceTree = "<group>"; };
+		836151EC2C3707FD00F417E9 /* big-mac-2024-01-01.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "big-mac-2024-01-01.csv"; sourceTree = "<group>"; };
 		836D5BEC2C316C3C000C7DDA /* McspicyShanghaiDeluxe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McspicyShanghaiDeluxe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,7 +104,6 @@
 		836D5C992C32A931000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C9B2C32A939000C7DDA /* placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = placeholder; sourceTree = "<group>"; };
 		836D5C9D2C32DDD8000C7DDA /* BigmacCalculatorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatorStub.swift; sourceTree = "<group>"; };
-		83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "big-mac-2024-01-01.csv"; sourceTree = "<group>"; };
 		83980FD32C355FFF00C0CEB4 /* BigmacCSVParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCSVParser.swift; sourceTree = "<group>"; };
 		83980FD62C3583DD00C0CEB4 /* BigmacCSVParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCSVParserTests.swift; sourceTree = "<group>"; };
 		83980FD82C365E6200C0CEB4 /* BigmacCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculator.swift; sourceTree = "<group>"; };
@@ -402,7 +402,7 @@
 		83980FCF2C355EFE00C0CEB4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				83980FD02C355F0D00C0CEB4 /* big-mac-2024-01-01.csv */,
+				836151EC2C3707FD00F417E9 /* big-mac-2024-01-01.csv */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -538,7 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				836D5BF92C316C3D000C7DDA /* Assets.xcassets in Resources */,
-				83980FD12C355F0D00C0CEB4 /* big-mac-2024-01-01.csv in Resources */,
+				836151ED2C3707FD00F417E9 /* big-mac-2024-01-01.csv in Resources */,
 				836D5BFC2C316C3D000C7DDA /* Base in Resources */,
 				836D5BF72C316C3C000C7DDA /* Base in Resources */,
 			);

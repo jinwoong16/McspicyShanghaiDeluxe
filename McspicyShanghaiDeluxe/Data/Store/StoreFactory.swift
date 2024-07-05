@@ -14,6 +14,7 @@ final class StoreFactory {
     private let logger: Logger
     
     private var bigmacIndexStore: (any ModelStore<BigmacIndex>)?
+    private var isoCodeMapper = [String: [BigmacIndex]]()
     
     init(
         bigmacCSVParser: BigmacCSVParser,
@@ -27,14 +28,17 @@ final class StoreFactory {
     
     func buildBigmacIndexStore() -> any ModelStore<BigmacIndex> {
         let bigmacIndices = bigmacCSVParser.parse()
+
+        isoCodeMapper = Dictionary(grouping: bigmacIndices, by: { $0.currencyCode })
+            
         self.bigmacIndexStore = AnyModelStore(models: bigmacIndices)
         
         return bigmacIndexStore!
     }
     
-    func buildCurrencyStore() async -> some ModelStore<Currency> {
+    func buildCountryStore() async -> some ModelStore<Country> {
         guard let bigmacIndexStore else {
-            logger.debug("No pared bigmac index data.")
+            logger.debug("No parsed bigmac index data.")
             return AnyModelStore(models: [])
         }
         
@@ -55,7 +59,7 @@ final class StoreFactory {
         do {
             let currencyDto = try await apiService.request(with: endpoint)
             
-            return AnyModelStore(models: currencyDto.rates.compactMap(transform))
+            return AnyModelStore(models: currencyDto.rates.flatMap(transform))
         } catch {
             logger.error("Error occured: \(error)")
             
@@ -63,24 +67,32 @@ final class StoreFactory {
         }
     }
     
-    private func transform(_ currencyRateDto: CurrencyRateDTO) -> Currency? {
+    private func transform(_ currencyRateDto: CurrencyRateDTO) -> [Country] {
         guard let bigmacIndexStore,
-              let bigmacIndex = bigmacIndexStore.fetch(by: currencyRateDto.code),
-              let localizedCurrencyName = getCurrencyName(by: bigmacIndex.currencyCode),
-              let localizedCountryName = getCountryName(by: bigmacIndex.isoCountryCode),
-              let countryFlag = getCountryFlag(countryCode: bigmacIndex.isoCountryCode) else {
-            return nil
+              let bigmacIndices = isoCodeMapper[currencyRateDto.code] else {
+            return []
         }
         
-        return Currency(
-            name: localizedCurrencyName,
-            code: currencyRateDto.code,
-            rate: currencyRateDto.rate,
-            country: Country(
-                name: localizedCountryName,
-                flag: countryFlag
-            )
-        )
+        return bigmacIndices
+            .compactMap { bigmacIndex in
+                guard let localizedCurrencyName = getCurrencyName(by: bigmacIndex.currencyCode),
+                      let localizedCountryName = getCountryName(by: bigmacIndex.isoCountryCode),
+                      let countryFlag = getCountryFlag(countryCode: bigmacIndex.isoCountryCode) else {
+                    return nil
+                }
+                
+                return Country(
+                    isoCountryCode: bigmacIndex.isoCountryCode,
+                    name: localizedCountryName,
+                    flag: countryFlag,
+                    currency: Currency(
+                        name: localizedCurrencyName,
+                        code: bigmacIndex.currencyCode,
+                        rate: currencyRateDto.rate
+                    ),
+                    localPrice: bigmacIndex.localPrice
+                )
+            }
     }
     
     private func getCurrencyName(

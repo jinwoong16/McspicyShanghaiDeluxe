@@ -6,10 +6,12 @@
 //
 
 import XCTest
+import Combine
 @testable import McspicyShanghaiDeluxe
 
 final class BigmacCalculatorTests: XCTestCase {
     private var bigmacCalculator: BigmacCalculator!
+    private var anyCancellables = Set<AnyCancellable>()
     
     override func setUpWithError() throws {
         let configuration = URLSessionConfiguration.ephemeral
@@ -43,44 +45,76 @@ final class BigmacCalculatorTests: XCTestCase {
     override func tearDownWithError() throws {
         bigmacCalculator = nil
         MockURLSessionProtocol.loadingHandler = nil
+        anyCancellables = []
     }
     
     func test_exchange() throws {
         // given
+        let expectation = XCTestExpectation(description: "exchange method test")
+        
         let money = 5000
-        let currencyId = "USD"
-        sleep(2)
+        let countryCode = "USA"
         
-        // when
-        let exchangedMoney = bigmacCalculator.exchange(money, to: currencyId)
+        bigmacCalculator
+            .readyToUpdateUI()
+            .filter { $0 }
+            .sink { _ in
+                // when
+                let exchangedMoney = self.bigmacCalculator.exchange(money, to: countryCode)
+                
+                // then
+                XCTAssertEqual(5000 * 0.00072, exchangedMoney)
+                expectation.fulfill()
+            }
+            .store(in: &anyCancellables)
         
-        // then
-        XCTAssertEqual(5000 * 0.00072, exchangedMoney)
+        wait(for: [expectation], timeout: 10.0)
     }
     
     func test_countBicamcs() throws {
         // given
+        let expectation = XCTestExpectation(description: "countBicamcs method test")
+        
         let money = 100000
-        let currencyId = "USD"
-        sleep(2)
+        let countryCode = "USA"
         
-        let exchangedMoney = bigmacCalculator.exchange(money, to: currencyId)
+        bigmacCalculator
+            .readyToUpdateUI()
+            .filter { $0 }
+            .sink { _ in
+                // when
+                let exchangedMoney = self.bigmacCalculator.exchange(money, to: countryCode)
+                let bigmacs = self.bigmacCalculator.countBigmacs(with: exchangedMoney, countryId: countryCode)
+                
+                // then
+                XCTAssertEqual(12, bigmacs)
+                expectation.fulfill()
+            }
+            .store(in: &anyCancellables)
         
-        // when
-        let bigmacs = bigmacCalculator.countBigmacs(with: exchangedMoney, currencyId: currencyId)
-        
-        // then
-        XCTAssertEqual(12, bigmacs)
+        wait(for: [expectation], timeout: 10.0)
     }
     
-    func test_getAvailableCurrencies() throws {
+    func test_getAvailableCountries() throws {
         // given
-        sleep(2)
+        let expectation = XCTestExpectation(description: "getAvailableCountries method test")
         
         // when
-        let currencies = bigmacCalculator.getAvailableCurrencies()
+        bigmacCalculator
+            .readyToUpdateUI()
+            .filter { $0 }
+            .sink { _ in
+                // when
+                let contries = self.bigmacCalculator.getAvailableCountries()
+                
+                // then
+                XCTAssert(!contries.isEmpty)
+                XCTAssertEqual(30, contries.count)
+                
+                expectation.fulfill()
+            }
+            .store(in: &anyCancellables)
         
-        // then
-        XCTAssert(!currencies.isEmpty)
+        wait(for: [expectation], timeout: 10.0)
     }
 }

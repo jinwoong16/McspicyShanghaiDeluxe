@@ -38,8 +38,8 @@ final class StoreFactoryTests: XCTestCase {
         let bigmacIndexStore = storeFactory.buildBigmacIndexStore()
         
         // then
-        XCTAssertEqual(5.69, bigmacIndexStore.fetch(by: "USD")?.localPrice)
-        XCTAssertEqual("JPN", bigmacIndexStore.fetch(by: "JPY")?.isoCountryCode)
+        XCTAssertEqual(5.69, bigmacIndexStore.fetch(by: "USA")?.localPrice)
+        XCTAssertEqual("Japan", bigmacIndexStore.fetch(by: "JPN")?.countryName)
     }
     
     func test_buildCurrencyStore() async throws {
@@ -57,13 +57,22 @@ final class StoreFactoryTests: XCTestCase {
         let _ = storeFactory.buildBigmacIndexStore()
         
         // when
-        let currencyStore = await storeFactory.buildCurrencyStore()
+        let countryStore = await storeFactory.buildCountryStore()
         
         // then
-        XCTAssertEqual("미국", currencyStore.fetch(by: "USD")?.country.name)
-        XCTAssertEqual("🇺🇸", currencyStore.fetch(by: "USD")?.country.flag)
+        XCTAssertEqual("미국", countryStore.fetch(by: "USA")?.name)
+        XCTAssertEqual("🇺🇸", countryStore.fetch(by: "USA")?.flag)
         
-        XCTAssertEqual("헝가리", currencyStore.fetch(by: "HUF")?.country.name)
-        XCTAssertEqual("🇭🇺", currencyStore.fetch(by: "HUF")?.country.flag)
+        XCTAssertEqual("헝가리", countryStore.fetch(by: "HUN")?.name)
+        XCTAssertEqual("🇭🇺", countryStore.fetch(by: "HUN")?.flag)
+        
+        XCTAssertEqual("독일", countryStore.fetch(by: "DEU")?.name)
+        XCTAssertEqual("🇩🇪", countryStore.fetch(by: "DEU")?.flag)
+        
+        XCTAssertEqual("프랑스", countryStore.fetch(by: "FRA")?.name)
+        XCTAssertEqual("🇫🇷", countryStore.fetch(by: "FRA")?.flag)
+        
+        XCTAssertEqual("이탈리아", countryStore.fetch(by: "ITA")?.name)
+        XCTAssertEqual("🇮🇹", countryStore.fetch(by: "ITA")?.flag)
     }
 }

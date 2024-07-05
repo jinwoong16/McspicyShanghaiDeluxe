@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Country {
+struct Country: Identifiable {
+    let isoCountryCode: String
     let name: String
     let flag: String
+    let currency: Currency
+    let localPrice: Double
+    
+    var id: String { isoCountryCode }
 }
