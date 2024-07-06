@@ -23,6 +23,8 @@ final class BaseCurrencyView: UIView {
     }
     
     private func setupUI() {
+        backgroundColor = .backgroundColor
+        
         addSubview(baseCurrencyCountryLabel)
         addSubview(baseCurrencyTextField)
         addSubview(exchangeIcon)
@@ -32,11 +34,14 @@ final class BaseCurrencyView: UIView {
         exchangeIcon.translatesAutoresizingMaskIntoConstraints = false
         
         baseCurrencyCountryLabel.text = "🇰🇷 대한민국"
-        baseCurrencyCountryLabel.textColor = .black
+        baseCurrencyCountryLabel.textColor = .white
         baseCurrencyCountryLabel.font = UIFont.systemFont(ofSize: 16)
+        baseCurrencyCountryLabel.backgroundColor = .defaultBoxColor
+        baseCurrencyCountryLabel.layer.cornerRadius = 5
+        baseCurrencyCountryLabel.layer.masksToBounds = true
         
         NSLayoutConstraint.activate([
-            baseCurrencyCountryLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            baseCurrencyCountryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
             baseCurrencyCountryLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
         ])
     }
@@ -44,10 +49,10 @@ final class BaseCurrencyView: UIView {
 
 // TODO: 피커뷰 버튼으로 변경
 final class BaseCurrencyCountryLabel: UILabel {
-    private var topInset: CGFloat = 10
+    private var topInset: CGFloat = 8
     private var leftInset: CGFloat = 15
     private var rightInset: CGFloat = 15
-    private var bottomInset: CGFloat = 10
+    private var bottomInset: CGFloat = 8
     
     override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
