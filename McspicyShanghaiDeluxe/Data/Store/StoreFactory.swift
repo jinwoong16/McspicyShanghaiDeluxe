@@ -18,12 +18,14 @@ final class StoreFactory {
     
     init(
         bigmacCSVParser: BigmacCSVParser,
-        apiService: any ApiService,
-        logger: Logger = .init(.default)
+        apiService: any ApiService
     ) {
         self.bigmacCSVParser = bigmacCSVParser
         self.apiService = apiService
-        self.logger = logger
+        self.logger = Logger(
+            subsystem: "co.kr.codegrove.McspicyShanghaiDeluxe",
+            category: "StoreFactory"
+        )
     }
     
     func buildBigmacIndexStore() -> any ModelStore<BigmacIndex> {

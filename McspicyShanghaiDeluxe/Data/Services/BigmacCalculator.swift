@@ -18,10 +18,12 @@ final class BigmacCalculator {
     private let logger: Logger
     
     init(
-        factory: StoreFactory,
-        logger: Logger = .init(.default)
+        factory: StoreFactory
     ) {
-        self.logger = logger
+        self.logger = Logger(
+            subsystem: "co.kr.codegrove.McspicyShanghaiDeluxe",
+            category: "BigmacCalculator"
+        )
         Task {
             self.bigmacIndexStore = factory.buildBigmacIndexStore()
             self.countryStore = await factory.buildCountryStore()
@@ -52,6 +54,8 @@ extension BigmacCalculator: BigmacCalculatable {
     }
     
     func readyToUpdateUI() -> AnyPublisher<Bool, Never> {
-        updateUIEvent.eraseToAnyPublisher()
+        updateUIEvent
+            .filter { $0 }
+            .eraseToAnyPublisher()
     }
 }
