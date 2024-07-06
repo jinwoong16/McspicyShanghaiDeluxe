@@ -80,7 +80,6 @@ final class BigmacCalculatorTests: XCTestCase {
         
         bigmacCalculator
             .readyToUpdateUI()
-            .filter { $0 }
             .sink { _ in
                 // when
                 let exchangedMoney = self.bigmacCalculator.exchange(money, to: countryCode)
@@ -102,7 +101,6 @@ final class BigmacCalculatorTests: XCTestCase {
         // when
         bigmacCalculator
             .readyToUpdateUI()
-            .filter { $0 }
             .sink { _ in
                 // when
                 let contries = self.bigmacCalculator.getAvailableCountries()
