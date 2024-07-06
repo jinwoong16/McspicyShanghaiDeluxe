@@ -76,4 +76,25 @@ final class StoreFactoryTests: XCTestCase {
         XCTAssertEqual("이탈리아", countryStore.fetch(by: "ITA")?.name)
         XCTAssertEqual("🇮🇹", countryStore.fetch(by: "ITA")?.flag)
     }
+    
+    func test_buildCurrencyStore_withInValidEndpoint_shouldReturnEmptryStore() async throws {
+        // given
+        MockURLSessionProtocol.loadingHandler = {
+            let response = HTTPURLResponse(
+                url: URL(string: "https://api.frankfurter.app/latest?from=KRW&to=AED,ARS,AUD,AZN,BHD,BRL,CAD,CHF,CLP,CNY,COP,CRC,CZK,DKK,EGP,EUR,GBP,GTQ,HKD,HNL,HUF,IDR,INR,ILS,JOD,JPY,KRW,KWD,LBP,LKR,MDL,MXN,MYR,NIO,NOK,NZD,OMR,PKR,PEN,PHP,PLN,QAR,RON,SAR,SGD,SEK,THB,TRY,TWD,UAH,UYU,USD,VES,VND,ZAR")!,
+                statusCode: 500,
+                httpVersion: nil,
+                headerFields: nil
+            )
+            
+            return (response!, nil)
+        }
+        let _ = storeFactory.buildBigmacIndexStore()
+        
+        // when
+        let countryStore = await storeFactory.buildCountryStore()
+        
+        // then
+        XCTAssert(countryStore.fetchAll().isEmpty)
+    }
 }
