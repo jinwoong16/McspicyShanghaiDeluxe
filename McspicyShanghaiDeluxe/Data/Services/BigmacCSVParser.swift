@@ -12,8 +12,11 @@ import os
 final class BigmacCSVParser {
     private let logger: Logger
     
-    init(logger: Logger = .init(.default)) {
-        self.logger = logger
+    init() {
+        self.logger = Logger(
+            subsystem: "co.kr.codegrove.McspicyShanghaiDeluxe",
+            category: "BigmacCSVParser"
+        )
     }
     
     func parse() -> [BigmacIndex] {
