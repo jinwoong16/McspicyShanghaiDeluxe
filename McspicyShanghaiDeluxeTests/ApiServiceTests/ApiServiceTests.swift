@@ -24,6 +24,7 @@ final class ApiServiceTests: XCTestCase {
 
     override func tearDownWithError() throws {
         apiService = nil
+        MockURLSessionProtocol.loadingHandler = nil
     }
     
     func test_request_withValidRequest_shouldReturnCurrencyData() async throws {

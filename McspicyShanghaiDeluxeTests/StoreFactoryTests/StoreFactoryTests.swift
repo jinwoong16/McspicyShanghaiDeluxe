@@ -29,6 +29,7 @@ final class StoreFactoryTests: XCTestCase {
 
     override func tearDownWithError() throws {
         storeFactory = nil
+        MockURLSessionProtocol.loadingHandler = nil
     }
     
     func test_buildBigmacIndexStore() throws {
