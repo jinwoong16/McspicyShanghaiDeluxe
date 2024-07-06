@@ -42,7 +42,7 @@ final class StoreFactoryTests: XCTestCase {
         XCTAssertEqual("Japan", bigmacIndexStore.fetch(by: "JPN")?.countryName)
     }
     
-    func test_buildCurrencyStore() async throws {
+    func test_buildCurrencyStore_withValidEndpoint_shouldReturnNonEmptryStore() async throws {
         // given
         MockURLSessionProtocol.loadingHandler = {
             let response = HTTPURLResponse(
