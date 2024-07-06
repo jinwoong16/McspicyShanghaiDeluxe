@@ -52,6 +52,8 @@ extension BigmacCalculator: BigmacCalculatable {
     }
     
     func readyToUpdateUI() -> AnyPublisher<Bool, Never> {
-        updateUIEvent.eraseToAnyPublisher()
+        updateUIEvent
+            .filter { $0 }
+            .eraseToAnyPublisher()
     }
 }
