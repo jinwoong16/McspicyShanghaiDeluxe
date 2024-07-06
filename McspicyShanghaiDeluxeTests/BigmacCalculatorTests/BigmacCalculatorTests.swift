@@ -71,7 +71,7 @@ final class BigmacCalculatorTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func test_countBicamcs() throws {
+    func test_countBicamcs_whenRegionIsUSA() throws {
         // given
         let expectation = XCTestExpectation(description: "countBicamcs method test")
         
@@ -80,7 +80,6 @@ final class BigmacCalculatorTests: XCTestCase {
         
         bigmacCalculator
             .readyToUpdateUI()
-            .filter { $0 }
             .sink { _ in
                 // when
                 let exchangedMoney = self.bigmacCalculator.exchange(money, to: countryCode)
@@ -95,6 +94,29 @@ final class BigmacCalculatorTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
+    func test_countBicamcs_whenRegionIsDEU() throws {
+        // given
+        let expectation = XCTestExpectation(description: "countBicamcs method test")
+        
+        let money = 100000
+        let countryCode = "DEU"
+        
+        bigmacCalculator
+            .readyToUpdateUI()
+            .sink { _ in
+                // when
+                let exchangedMoney = self.bigmacCalculator.exchange(money, to: countryCode)
+                let bigmacs = self.bigmacCalculator.countBigmacs(with: exchangedMoney, countryId: countryCode)
+                
+                // then
+                XCTAssertEqual(5, bigmacs)
+                expectation.fulfill()
+            }
+            .store(in: &anyCancellables)
+        
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
     func test_getAvailableCountries() throws {
         // given
         let expectation = XCTestExpectation(description: "getAvailableCountries method test")
@@ -102,7 +124,6 @@ final class BigmacCalculatorTests: XCTestCase {
         // when
         bigmacCalculator
             .readyToUpdateUI()
-            .filter { $0 }
             .sink { _ in
                 // when
                 let contries = self.bigmacCalculator.getAvailableCountries()

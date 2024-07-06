@@ -13,3 +13,17 @@ struct Fonts {
     static let interExtraLight: String = "Inter-ExtraLight"
     static let interRegular: String = "Inter-Regular"
 }
+
+extension UIFont {
+    static func interRegular(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: Fonts.interRegular, size: size)!
+    }
+
+    static func interLight(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: Fonts.interLight, size: size)!
+    }
+
+    static func interExtraLight(ofSize size: CGFloat) -> UIFont {
+        return UIFont(name: Fonts.interExtraLight, size: size)!
+    }
+}

@@ -32,6 +32,7 @@
 		833D026A2C34293B003A1FB2 /* ApiServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D02692C34293B003A1FB2 /* ApiServiceTests.swift */; };
 		833D026D2C342B06003A1FB2 /* CurrencyDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D026C2C342B06003A1FB2 /* CurrencyDTO.swift */; };
 		833D026F2C34452E003A1FB2 /* CurrencyDataMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D026E2C34452E003A1FB2 /* CurrencyDataMock.swift */; };
+		835D68FE2C392BA600698976 /* XCTest+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835D68FD2C392BA600698976 /* XCTest+.swift */; };
 		836151E12C36654C00F417E9 /* Sequence+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E02C36654C00F417E9 /* Sequence+.swift */; };
 		836151E32C3684F700F417E9 /* StoreFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E22C3684F700F417E9 /* StoreFactory.swift */; };
 		836151E62C36856C00F417E9 /* StoreFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E52C36856C00F417E9 /* StoreFactoryTests.swift */; };
@@ -100,6 +101,7 @@
 		833D02692C34293B003A1FB2 /* ApiServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiServiceTests.swift; sourceTree = "<group>"; };
 		833D026C2C342B06003A1FB2 /* CurrencyDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDTO.swift; sourceTree = "<group>"; };
 		833D026E2C34452E003A1FB2 /* CurrencyDataMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyDataMock.swift; sourceTree = "<group>"; };
+		835D68FD2C392BA600698976 /* XCTest+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTest+.swift"; sourceTree = "<group>"; };
 		836151E02C36654C00F417E9 /* Sequence+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+.swift"; sourceTree = "<group>"; };
 		836151E22C3684F700F417E9 /* StoreFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFactory.swift; sourceTree = "<group>"; };
 		836151E52C36856C00F417E9 /* StoreFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFactoryTests.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				833D02632C342715003A1FB2 /* ApiServiceTests */,
 				833D02542C341752003A1FB2 /* RequestableTests */,
 				836D5C062C316C3D000C7DDA /* McspicyShanghaiDeluxeTests.swift */,
+				835D68FD2C392BA600698976 /* XCTest+.swift */,
 			);
 			path = McspicyShanghaiDeluxeTests;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				833D026F2C34452E003A1FB2 /* CurrencyDataMock.swift in Sources */,
 				833D02592C3417F6003A1FB2 /* RequestableTests.swift in Sources */,
 				833D02682C342875003A1FB2 /* ApiServiceStub.swift in Sources */,
+				835D68FE2C392BA600698976 /* XCTest+.swift in Sources */,
 				833D026A2C34293B003A1FB2 /* ApiServiceTests.swift in Sources */,
 				83980FD72C3583DD00C0CEB4 /* BigmacCSVParserTests.swift in Sources */,
 				836D5C072C316C3D000C7DDA /* McspicyShanghaiDeluxeTests.swift in Sources */,
