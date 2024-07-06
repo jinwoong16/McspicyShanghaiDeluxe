@@ -71,7 +71,7 @@ final class BigmacCalculatorTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func test_countBicamcs() throws {
+    func test_countBicamcs_whenRegionIsUSA() throws {
         // given
         let expectation = XCTestExpectation(description: "countBicamcs method test")
         
