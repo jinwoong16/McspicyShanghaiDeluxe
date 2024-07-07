@@ -55,10 +55,10 @@ final class BaseCurrencyView: UIView {
             baseCurrencyCountryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
             baseCurrencyCountryLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
             
-            baseCurrencyTextField.topAnchor.constraint(equalTo: baseCurrencyCountryLabel.bottomAnchor, constant: 40),
+            baseCurrencyTextField.topAnchor.constraint(equalTo: baseCurrencyCountryLabel.bottomAnchor, constant: 20),
             baseCurrencyTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43),
             baseCurrencyTextField.widthAnchor.constraint(equalToConstant: 307),
-            //            baseCurrencyTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43),
+            //baseCurrencyTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43),
             //이 코드로 바꾸고 싶은데 이걸로 바꾸면 화면이 찌그러져요 ...
             
             baseCurrencySuffixLabel.leadingAnchor.constraint(equalTo: baseCurrencyTextField.trailingAnchor, constant: -45),
