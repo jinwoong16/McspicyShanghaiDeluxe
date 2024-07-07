@@ -72,5 +72,9 @@ final class CircularCountrySelectViewController: UIViewController {
             
             gesture.setTranslation(.zero, in: view)
         }
+        
+        if gesture.state == .ended {
+            circularContryButtonsView.updateCheckmark()
+        }
     }
 }
