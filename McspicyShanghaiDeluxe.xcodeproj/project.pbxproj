@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04ACE9562C34488000982106 /* ConvertedAmountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */; };
+		04ACE9582C34491200982106 /* BigMacCountDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9572C34491200982106 /* BigMacCountDisplay.swift */; };
+		04ACE95A2C34498E00982106 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9592C34498E00982106 /* TooltipView.swift */; };
+		04ACE95C2C3449F300982106 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE95B2C3449F300982106 /* CurrencyViewController.swift */; };
 		04ACEA2E2C36F30000982106 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACEA2D2C36F30000982106 /* Colors.swift */; };
 		04ACEA302C36F30700982106 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACEA2F2C36F30700982106 /* Fonts.swift */; };
 		04ACEA3B2C3701D200982106 /* Inter-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA3A2C3701D200982106 /* Inter-ExtraLight.ttf */; };
@@ -18,6 +22,7 @@
 		04ACEA432C3701E600982106 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA422C3701E600982106 /* Inter-Regular.ttf */; };
 		04ACEA442C3701E600982106 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA422C3701E600982106 /* Inter-Regular.ttf */; };
 		04ACEA452C3701E600982106 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 04ACEA422C3701E600982106 /* Inter-Regular.ttf */; };
+		04ACEA952C38251900982106 /* BaseCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACEA942C38251900982106 /* BaseCurrencyView.swift */; };
 		833D024C2C3411F8003A1FB2 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D024B2C3411F8003A1FB2 /* HttpMethod.swift */; };
 		833D024E2C34127C003A1FB2 /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D024D2C34127C003A1FB2 /* HttpError.swift */; };
 		833D02512C3412E3003A1FB2 /* Requestable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 833D02502C3412E3003A1FB2 /* Requestable.swift */; };
@@ -38,12 +43,6 @@
 		836151E62C36856C00F417E9 /* StoreFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E52C36856C00F417E9 /* StoreFactoryTests.swift */; };
 		836151E92C36BC2D00F417E9 /* BigmacCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836151E82C36BC2D00F417E9 /* BigmacCalculatorTests.swift */; };
 		836151ED2C3707FD00F417E9 /* big-mac-2024-01-01.csv in Resources */ = {isa = PBXBuildFile; fileRef = 836151EC2C3707FD00F417E9 /* big-mac-2024-01-01.csv */; };
-		04ACE9502C34462A00982106 /* baseCurrencyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE94F2C34462A00982106 /* baseCurrencyTextField.swift */; };
-		04ACE9562C34488000982106 /* ConvertedAmountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */; };
-		04ACE9582C34491200982106 /* BigMacCountDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9572C34491200982106 /* BigMacCountDisplay.swift */; };
-		04ACE95A2C34498E00982106 /* TooltipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE9592C34498E00982106 /* TooltipView.swift */; };
-		04ACE95C2C3449F300982106 /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACE95B2C3449F300982106 /* CurrencyViewController.swift */; };
-		04ACEA952C38251900982106 /* BaseCurrencyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACEA942C38251900982106 /* BaseCurrencyView.swift */; };
 		836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */; };
 		836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */; };
 		836D5BF42C316C3C000C7DDA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836D5BF32C316C3C000C7DDA /* ViewController.swift */; };
@@ -82,11 +81,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertedAmountLabel.swift; sourceTree = "<group>"; };
+		04ACE9572C34491200982106 /* BigMacCountDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigMacCountDisplay.swift; sourceTree = "<group>"; };
+		04ACE9592C34498E00982106 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
+		04ACE95B2C3449F300982106 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		04ACEA2D2C36F30000982106 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		04ACEA2F2C36F30700982106 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		04ACEA3A2C3701D200982106 /* Inter-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraLight.ttf"; sourceTree = "<group>"; };
 		04ACEA3E2C3701DB00982106 /* Inter-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Light.ttf"; sourceTree = "<group>"; };
 		04ACEA422C3701E600982106 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		04ACEA942C38251900982106 /* BaseCurrencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCurrencyView.swift; sourceTree = "<group>"; };
 		833D024B2C3411F8003A1FB2 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
 		833D024D2C34127C003A1FB2 /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
 		833D02502C3412E3003A1FB2 /* Requestable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requestable.swift; sourceTree = "<group>"; };
@@ -107,12 +111,6 @@
 		836151E52C36856C00F417E9 /* StoreFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreFactoryTests.swift; sourceTree = "<group>"; };
 		836151E82C36BC2D00F417E9 /* BigmacCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigmacCalculatorTests.swift; sourceTree = "<group>"; };
 		836151EC2C3707FD00F417E9 /* big-mac-2024-01-01.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "big-mac-2024-01-01.csv"; sourceTree = "<group>"; };
-		04ACE94F2C34462A00982106 /* baseCurrencyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = baseCurrencyTextField.swift; sourceTree = "<group>"; };
-		04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertedAmountLabel.swift; sourceTree = "<group>"; };
-		04ACE9572C34491200982106 /* BigMacCountDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigMacCountDisplay.swift; sourceTree = "<group>"; };
-		04ACE9592C34498E00982106 /* TooltipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TooltipView.swift; sourceTree = "<group>"; };
-		04ACE95B2C3449F300982106 /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
-		04ACEA942C38251900982106 /* BaseCurrencyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCurrencyView.swift; sourceTree = "<group>"; };
 		836D5BEC2C316C3C000C7DDA /* McspicyShanghaiDeluxe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = McspicyShanghaiDeluxe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		836D5BEF2C316C3C000C7DDA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		836D5BF12C316C3C000C7DDA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +162,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04ACE94E2C3444BC00982106 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				04ACEA942C38251900982106 /* BaseCurrencyView.swift */,
+				04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */,
+				04ACE9572C34491200982106 /* BigMacCountDisplay.swift */,
+				04ACE9592C34498E00982106 /* TooltipView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		04ACEA2B2C36F2D400982106 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -278,18 +287,6 @@
 				836151E82C36BC2D00F417E9 /* BigmacCalculatorTests.swift */,
 			);
 			path = BigmacCalculatorTests;
-			sourceTree = "<group>";
-        };
-		04ACE94E2C3444BC00982106 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-				04ACEA942C38251900982106 /* BaseCurrencyView.swift */,
-				04ACE94F2C34462A00982106 /* baseCurrencyTextField.swift */,
-				04ACE9552C34488000982106 /* ConvertedAmountLabel.swift */,
-				04ACE9572C34491200982106 /* BigMacCountDisplay.swift */,
-				04ACE9592C34498E00982106 /* TooltipView.swift */,
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		836D5BE32C316C3C000C7DDA = {
@@ -656,7 +653,6 @@
 				836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */,
 				83980FDC2C365EED00C0CEB4 /* ModelStore.swift in Sources */,
 				04ACE95A2C34498E00982106 /* TooltipView.swift in Sources */,
-				04ACE9502C34462A00982106 /* baseCurrencyTextField.swift in Sources */,
 				04ACE9582C34491200982106 /* BigMacCountDisplay.swift in Sources */,
 				04ACE9562C34488000982106 /* ConvertedAmountLabel.swift in Sources */,
 				04ACEA952C38251900982106 /* BaseCurrencyView.swift in Sources */,
