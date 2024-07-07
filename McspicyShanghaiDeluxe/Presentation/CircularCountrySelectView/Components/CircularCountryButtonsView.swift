@@ -19,6 +19,7 @@ final class CircularCountryButtonsView: UIView {
     private let minorAxis: CGFloat = 250
     private let majorAxis: CGFloat = 320
     private var theta: CGFloat = 0
+    private var previousIndex: Int = 0
     
     private var rotateAngle: CGFloat {
         2 * .pi / CGFloat(countryButtons.count)
@@ -60,6 +61,22 @@ final class CircularCountryButtonsView: UIView {
     func rotate(to direction: RotateDirection) {
         self.angle += rotateAngle * direction.rawValue
         setNeedsLayout()
+    }
+    
+    func updateCheckmark() {
+        let currentAngle = Int(round(angle * 180 / .pi)) % 360
+        let index: Int
+        if currentAngle < 0 {
+            index = (30 - (360 + currentAngle) / 12) % 30
+        } else {
+            index = (30 - currentAngle / 12) % 30
+        }
+        
+        if index != previousIndex {
+            countryButtons[previousIndex].turnOff()
+            countryButtons[index].turnOn()
+            previousIndex = index
+        }
     }
     
     private func configureuUI() {
