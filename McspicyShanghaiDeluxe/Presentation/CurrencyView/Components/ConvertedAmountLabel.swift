@@ -8,7 +8,7 @@
 import UIKit
 
 final class ConvertedAmountLabel: UIView {
-    let destinationCountryButton = UIButton()
+    let destinationCountryButton = DestinationCountryButton()
     let convertedAmountLabel = UILabel()
     let convertedAmountSuffixLabel = UILabel()
     let fromLabel = UILabel() //에서
@@ -38,5 +38,39 @@ final class ConvertedAmountLabel: UIView {
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         toLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        destinationCountryButton.setTitle("🇺🇸 미국", for: .normal)
+        destinationCountryButton.setTitleColor(.white, for: .normal)
+        destinationCountryButton.titleLabel?.font = UIFont.interExtraLight(ofSize: 16)
+        destinationCountryButton.backgroundColor = .defaultBoxColor
+        destinationCountryButton.layer.cornerRadius = 5
+        destinationCountryButton.layer.masksToBounds = true
+        
+        NSLayoutConstraint.activate([
+            destinationCountryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
+            destinationCountryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 326) //뷰컨에 붙이고 나서 쉐브론 기준으로 다시 계산하기
+        ])
     }
+}
+
+final class DestinationCountryButton: UIButton {
+    private var topInset: CGFloat = 8
+    private var leftInset: CGFloat = 15
+    private var rightInset: CGFloat = 15
+    private var bottomInset: CGFloat = 8
+    
+    override func draw(_ rect: CGRect) {
+        let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
+        super.draw(rect.inset(by: insets))
+    }
+    
+    override var intrinsicContentSize: CGSize {
+        let size = super.intrinsicContentSize
+        return CGSize(width: size.width + leftInset + rightInset,
+                      height: size.height + topInset + bottomInset)
+    }
+}
+
+
+#Preview {
+    ConvertedAmountLabel()
 }
