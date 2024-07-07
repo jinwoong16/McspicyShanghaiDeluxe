@@ -6,3 +6,11 @@
 //
 
 import UIKit
+
+final class ConvertedAmountLabel: UIView {
+    let destinationCountryButton = UIButton()
+    let convertedAmountLabel = UILabel()
+    let convertedAmountSuffixLabel = UILabel()
+    let fromLabel = UILabel() //에서
+    let toLabel = UILabel() //(으)로
+}
