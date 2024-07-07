@@ -1,10 +1,3 @@
-//
-//  IndexViewController.swift
-//  McspicyShanghaiDeluxe
-//
-//  Created by 조아라 on 7/4/24.
-//
-
 import UIKit
 
 struct SelectedCountry: Codable {
@@ -13,11 +6,13 @@ struct SelectedCountry: Codable {
 }
 
 class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDataSource, UITableViewDelegate, UISceneDelegate {
+    
     // MARK: - Properties
-    var ttsValue: String = ""
     var selectedCountry: [SelectedCountry] = [] {
         didSet {
             print("country \(selectedCountry)")
+            tableView.reloadData()
+            tableView.backgroundView?.isHidden = !selectedCountry.isEmpty
         }
     }
     
@@ -64,8 +59,6 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-        //UIButton으로 변경할 예정. 써큘러 피커로 연결되어야함.
-        
     }()
     
     private var priceHStackView: UIStackView = UIStackView()
@@ -88,6 +81,7 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         setupAddButton()
         let loadedCountries = loadCountries()
         self.selectedCountry = loadedCountries
+        tableView.backgroundView?.isHidden = !selectedCountry.isEmpty
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -97,14 +91,32 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     
     // MARK: - Functions
     private func setupEmptyView() {
+        let containerView = UIView()
+        containerView.backgroundColor = UIColor(hex: "2C292C")
+        containerView.layer.cornerRadius = 15
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        
         let label = UILabel()
-        label.text = "나라를 선택하세요!"
-        label.textColor = .black
+        label.text = "나라를 선택해 주세요."
+        label.textColor = UIColor(hex: "999999")
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18)
-        tableView.backgroundView = label
-        tableView.backgroundView?.isHidden = true
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        containerView.addSubview(label)
+        view.addSubview(containerView)
+        
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: priceVStackView.bottomAnchor, constant: 50),
+            containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            containerView.widthAnchor.constraint(equalToConstant: 340),
+            containerView.heightAnchor.constraint(equalToConstant: 300),
+            
+            label.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+        ])
     }
+
     
     private func autoLayout() {
         view.addSubview(koreaLabel)
@@ -159,7 +171,6 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         priceVStackView.addArrangedSubview(priceHStackView)
         priceVStackView.addArrangedSubview(label)
         
-    
         view.addSubview(priceVStackView)
         
         priceVStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -214,24 +225,6 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         return []
     }
     
-    func mcCount(amountKRW: Double, ttsString: String) {
-        guard let exchangeRateUSD = Double(ttsString) else {
-            print("환율 정보가 유효하지 않습니다: \(ttsString)")
-            return
-        }
-        let amountUSD = amountKRW / exchangeRateUSD
-        print("환율 적용 후 USD: \(amountUSD)")
-        
-        selectedCountry = selectedCountry.map { country in
-            let countryPrice = bigMacPricesInUSD[country.countryName] ?? 0.0
-            let count = Int(amountUSD / countryPrice)
-            return SelectedCountry(countryName: country.countryName, count: count)
-        }
-        
-        tableView.reloadData()
-        saveCountries(countries: selectedCountry)
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -250,7 +243,7 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let country = selectedCountry[indexPath.row]
         cell.textLabel?.text = "\(country.countryName): \(country.count) 개"
-        cell.textLabel?.textColor = .black
+        cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor(hex: "232123")
         return cell
     }
