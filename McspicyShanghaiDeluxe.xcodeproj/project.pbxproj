@@ -59,6 +59,7 @@
 		83AD6DCF2C3A815300DF8D49 /* CircularCountrySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD6DCE2C3A815300DF8D49 /* CircularCountrySelectViewController.swift */; };
 		83AD6DD22C3A822800DF8D49 /* CountryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD6DD12C3A822800DF8D49 /* CountryButton.swift */; };
 		83AD6DD42C3A875200DF8D49 /* CircularCountryButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD6DD32C3A875200DF8D49 /* CircularCountryButtonsView.swift */; };
+		83F6CCDE2C3AFF4400932E25 /* FeedbackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6CCDD2C3AFF4400932E25 /* FeedbackHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		83AD6DCE2C3A815300DF8D49 /* CircularCountrySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCountrySelectViewController.swift; sourceTree = "<group>"; };
 		83AD6DD12C3A822800DF8D49 /* CountryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryButton.swift; sourceTree = "<group>"; };
 		83AD6DD32C3A875200DF8D49 /* CircularCountryButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCountryButtonsView.swift; sourceTree = "<group>"; };
+		83F6CCDD2C3AFF4400932E25 /* FeedbackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -483,6 +485,7 @@
 		83AD6DCD2C3A812100DF8D49 /* CircularCountrySelectView */ = {
 			isa = PBXGroup;
 			children = (
+				83F6CCDC2C3AFF3200932E25 /* Util */,
 				83AD6DD02C3A821800DF8D49 /* Components */,
 				83AD6DCE2C3A815300DF8D49 /* CircularCountrySelectViewController.swift */,
 			);
@@ -496,6 +499,14 @@
 				83AD6DD32C3A875200DF8D49 /* CircularCountryButtonsView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		83F6CCDC2C3AFF3200932E25 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				83F6CCDD2C3AFF4400932E25 /* FeedbackHandler.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -662,6 +673,7 @@
 				833D02512C3412E3003A1FB2 /* Requestable.swift in Sources */,
 				833D026D2C342B06003A1FB2 /* CurrencyDTO.swift in Sources */,
 				83AD6DCF2C3A815300DF8D49 /* CircularCountrySelectViewController.swift in Sources */,
+				83F6CCDE2C3AFF4400932E25 /* FeedbackHandler.swift in Sources */,
 				04ACEA302C36F30700982106 /* Fonts.swift in Sources */,
 				836151E12C36654C00F417E9 /* Sequence+.swift in Sources */,
 				836D5BF22C316C3C000C7DDA /* SceneDelegate.swift in Sources */,
