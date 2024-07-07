@@ -15,9 +15,14 @@ final class CountryButton: UIButton {
         return countryLabel
     }()
     
-    init() {
+    private let country: Country
+    
+    init(country: Country) {
+        self.country = country
         super.init(frame: .zero)
+        
         configureUI()
+        configureLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -37,13 +42,12 @@ final class CountryButton: UIButton {
         ])
     }
     
-    func setup(with country: Country) {
+    func configureLabel() {
         countryLabel.text = "\(country.name) / \(country.currency.code)"
     }
 }
 
 #Preview {
-    let button = CountryButton()
-    button.setup(with: Country(isoCountryCode: "", name: "Korea", flag: "🇰🇷", currency: Currency(name: "won", code: "KRW", rate: 0), localPrice: 0))
+    let button = CountryButton(country: Country(isoCountryCode: "", name: "Korea", flag: "🇰🇷", currency: Currency(name: "won", code: "KRW", rate: 0), localPrice: 0))
     return button
 }
