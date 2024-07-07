@@ -29,6 +29,12 @@ final class CountryButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func sizeToFit() {
+        super.sizeToFit()
+    
+        frame = CGRect(x: 0, y: 0, width: countryLabel.bounds.width, height: countryLabel.bounds.height)
+    }
+    
     private func configureUI() {
         addSubview(countryLabel)
         
@@ -44,10 +50,6 @@ final class CountryButton: UIButton {
     
     func configureLabel() {
         countryLabel.text = "\(country.name) / \(country.currency.code)"
+        countryLabel.sizeToFit()
     }
-}
-
-#Preview {
-    let button = CountryButton(country: Country(isoCountryCode: "", name: "Korea", flag: "🇰🇷", currency: Currency(name: "won", code: "KRW", rate: 0), localPrice: 0))
-    return button
 }
