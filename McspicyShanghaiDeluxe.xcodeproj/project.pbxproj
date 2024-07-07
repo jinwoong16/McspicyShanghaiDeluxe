@@ -58,6 +58,7 @@
 		83980FDC2C365EED00C0CEB4 /* ModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83980FDB2C365EED00C0CEB4 /* ModelStore.swift */; };
 		83AD6DCF2C3A815300DF8D49 /* CircularCountrySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD6DCE2C3A815300DF8D49 /* CircularCountrySelectViewController.swift */; };
 		83AD6DD22C3A822800DF8D49 /* CountryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD6DD12C3A822800DF8D49 /* CountryButton.swift */; };
+		83AD6DD42C3A875200DF8D49 /* CircularCountryButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD6DD32C3A875200DF8D49 /* CircularCountryButtonsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,7 @@
 		83980FDB2C365EED00C0CEB4 /* ModelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelStore.swift; sourceTree = "<group>"; };
 		83AD6DCE2C3A815300DF8D49 /* CircularCountrySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCountrySelectViewController.swift; sourceTree = "<group>"; };
 		83AD6DD12C3A822800DF8D49 /* CountryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryButton.swift; sourceTree = "<group>"; };
+		83AD6DD32C3A875200DF8D49 /* CircularCountryButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCountryButtonsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,6 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				83AD6DD12C3A822800DF8D49 /* CountryButton.swift */,
+				83AD6DD32C3A875200DF8D49 /* CircularCountryButtonsView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				833D02602C3425F1003A1FB2 /* CurrencyApiService.swift in Sources */,
 				833D024C2C3411F8003A1FB2 /* HttpMethod.swift in Sources */,
 				833D025D2C3424EC003A1FB2 /* ApiService.swift in Sources */,
+				83AD6DD42C3A875200DF8D49 /* CircularCountryButtonsView.swift in Sources */,
 				836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */,
 				836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */,
 				83980FDC2C365EED00C0CEB4 /* ModelStore.swift in Sources */,
