@@ -69,6 +69,10 @@ final class ConvertedAmountLabel: UIView {
         
         convertedAmountUnderLine.backgroundColor = .secondaryTextColor
         
+        toLabel.text = "(으)로"
+        toLabel.textColor = .secondaryTextColor
+        toLabel.font = UIFont.interExtraLight(ofSize: 15)
+        
         destinationBackground.backgroundColor = .defaultBoxColor
         destinationBackground.layer.cornerRadius = 15
         destinationBackground.layer.masksToBounds = true
@@ -90,6 +94,9 @@ final class ConvertedAmountLabel: UIView {
             convertedAmountUnderLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43),
             convertedAmountUnderLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43),
             convertedAmountUnderLine.heightAnchor.constraint(equalToConstant: 1),
+            
+            toLabel.centerXAnchor.constraint(equalTo: convertedAmountUnderLine.centerXAnchor),
+            toLabel.topAnchor.constraint(equalTo: convertedAmountUnderLine.bottomAnchor, constant: 20),
             
             destinationBackground.topAnchor.constraint(equalTo: topAnchor, constant: 302),
             destinationBackground.centerXAnchor.constraint(equalTo: centerXAnchor),
