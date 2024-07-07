@@ -70,5 +70,29 @@ final class CountryButton: UIButton {
         countryLabel.sizeToFit()
         checkImageView.sizeToFit()
     }
+    
+    func turnOn() {
+        let springParameter = UISpringTimingParameters(dampingRatio: 0.8, initialVelocity: .init(dx: 0.8, dy: 0.8))
+        let animator = UIViewPropertyAnimator(duration: 0.6, timingParameters: springParameter)
+        
+        animator.addAnimations {
+            self.checkImageView.alpha = 1
+            self.checkImageView.transform = .identity
+        }
+        
+        animator.startAnimation()
+    }
+    
+    func turnOff() {
+        let springParameter = UISpringTimingParameters(dampingRatio: 0.8, initialVelocity: .init(dx: 0.8, dy: 0.8))
+        let animator = UIViewPropertyAnimator(duration: 0.6, timingParameters: springParameter)
+        
+        animator.addAnimations {
+            self.checkImageView.alpha = 0
+            self.checkImageView.transform = CGAffineTransform(translationX: -30, y: 0).scaledBy(x: 0.3, y: 0.3)
+        }
+        
+        animator.startAnimation()
+        
     }
 }
