@@ -132,7 +132,9 @@ final class BaseCurrencyTextField: UITextField, UITextFieldDelegate {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        bottomBorder.frame = CGRect(x: 0, y: frame.height + 5, width: frame.width, height: 1)
+        if bottomBorder.frame == .zero {
+            bottomBorder.frame = CGRect(x: 0, y: frame.height + 5, width: frame.width, height: 1)
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
