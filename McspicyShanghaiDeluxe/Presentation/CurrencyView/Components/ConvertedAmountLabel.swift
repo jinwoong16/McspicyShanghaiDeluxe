@@ -11,9 +11,11 @@ final class ConvertedAmountLabel: UIView {
     let destinationCountryButton = DestinationCountryButton()
     let convertedAmountLabel = UILabel()
     let convertedAmountSuffixLabel = UILabel()
+    let chevronRight = UIImageView()
     let convertedAmountUnderLine = UIView()
     let fromLabel = UILabel() //에서
     let toLabel = UILabel() //(으)로
+    let destinationBackground = UIView()
 
     
     override init(frame: CGRect) {
@@ -28,9 +30,11 @@ final class ConvertedAmountLabel: UIView {
     private func setupUI() {
         backgroundColor = .backgroundColor
         
+        addSubview(destinationBackground)
         addSubview(destinationCountryButton)
         addSubview(convertedAmountLabel)
         addSubview(convertedAmountSuffixLabel)
+        addSubview(chevronRight)
         addSubview(convertedAmountUnderLine)
         addSubview(fromLabel)
         addSubview(toLabel)
@@ -38,16 +42,22 @@ final class ConvertedAmountLabel: UIView {
         destinationCountryButton.translatesAutoresizingMaskIntoConstraints = false
         convertedAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         convertedAmountSuffixLabel.translatesAutoresizingMaskIntoConstraints = false
+        chevronRight.translatesAutoresizingMaskIntoConstraints = false
         convertedAmountUnderLine.translatesAutoresizingMaskIntoConstraints = false
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         toLabel.translatesAutoresizingMaskIntoConstraints = false
+        destinationBackground.translatesAutoresizingMaskIntoConstraints = false
         
-        destinationCountryButton.setTitle("🇺🇸 미국", for: .normal)
+        destinationCountryButton.setTitle("🇺🇸 미국   ", for: .normal) //chevronRight때문에 눈속임으로..
         destinationCountryButton.setTitleColor(.white, for: .normal)
         destinationCountryButton.titleLabel?.font = UIFont.interExtraLight(ofSize: 16)
-        destinationCountryButton.backgroundColor = .defaultBoxColor
+        destinationCountryButton.backgroundColor = .destinationCountryButtonColor
         destinationCountryButton.layer.cornerRadius = 5
         destinationCountryButton.layer.masksToBounds = true
+        
+        chevronRight.image = UIImage(systemName: "chevron.right")
+        chevronRight.tintColor = UIColor.secondaryTextColor
+        chevronRight.contentMode = .scaleAspectFit
         
         fromLabel.text = "에서"
         fromLabel.textColor = .secondaryTextColor
@@ -55,9 +65,16 @@ final class ConvertedAmountLabel: UIView {
         
         convertedAmountUnderLine.backgroundColor = .secondaryTextColor
         
+        destinationBackground.backgroundColor = .defaultBoxColor
+        destinationBackground.layer.cornerRadius = 15
+        destinationBackground.layer.masksToBounds = true
+        
         NSLayoutConstraint.activate([
             destinationCountryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
-            destinationCountryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 326), //뷰컨에 붙이고 나서 쉐브론 기준으로 다시 계산하기
+            destinationCountryButton.topAnchor.constraint(equalTo: destinationBackground.topAnchor, constant: 20),
+            
+            chevronRight.centerYAnchor.constraint(equalTo: destinationCountryButton.centerYAnchor, constant: 0),
+            chevronRight.trailingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: -10),
             
             fromLabel.leadingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: 5),
             fromLabel.bottomAnchor.constraint(equalTo: destinationCountryButton.bottomAnchor, constant: -8),
@@ -66,6 +83,11 @@ final class ConvertedAmountLabel: UIView {
             convertedAmountUnderLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43),
             convertedAmountUnderLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43),
             convertedAmountUnderLine.heightAnchor.constraint(equalToConstant: 1),
+            
+            destinationBackground.topAnchor.constraint(equalTo: topAnchor, constant: 302),
+            destinationBackground.centerXAnchor.constraint(equalTo: centerXAnchor),
+            destinationBackground.widthAnchor.constraint(equalToConstant: 357),
+            destinationBackground.heightAnchor.constraint(equalToConstant: 353),
         ])
     }
 }
