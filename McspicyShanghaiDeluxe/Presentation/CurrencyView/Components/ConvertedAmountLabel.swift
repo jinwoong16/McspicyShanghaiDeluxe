@@ -11,8 +11,10 @@ final class ConvertedAmountLabel: UIView {
     let destinationCountryButton = DestinationCountryButton()
     let convertedAmountLabel = UILabel()
     let convertedAmountSuffixLabel = UILabel()
+    let convertedAmountUnderLine = UIView()
     let fromLabel = UILabel() //에서
     let toLabel = UILabel() //(으)로
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,12 +31,14 @@ final class ConvertedAmountLabel: UIView {
         addSubview(destinationCountryButton)
         addSubview(convertedAmountLabel)
         addSubview(convertedAmountSuffixLabel)
+        addSubview(convertedAmountUnderLine)
         addSubview(fromLabel)
         addSubview(toLabel)
         
         destinationCountryButton.translatesAutoresizingMaskIntoConstraints = false
         convertedAmountLabel.translatesAutoresizingMaskIntoConstraints = false
         convertedAmountSuffixLabel.translatesAutoresizingMaskIntoConstraints = false
+        convertedAmountUnderLine.translatesAutoresizingMaskIntoConstraints = false
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         toLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -49,21 +53,28 @@ final class ConvertedAmountLabel: UIView {
         fromLabel.textColor = .secondaryTextColor
         fromLabel.font = UIFont.interExtraLight(ofSize: 15)
         
+        convertedAmountUnderLine.backgroundColor = .secondaryTextColor
+        
         NSLayoutConstraint.activate([
             destinationCountryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
             destinationCountryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 326), //뷰컨에 붙이고 나서 쉐브론 기준으로 다시 계산하기
             
             fromLabel.leadingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: 5),
-            fromLabel.bottomAnchor.constraint(equalTo: destinationCountryButton.bottomAnchor, constant: -8)
+            fromLabel.bottomAnchor.constraint(equalTo: destinationCountryButton.bottomAnchor, constant: -8),
+            
+            convertedAmountUnderLine.topAnchor.constraint(equalTo: destinationCountryButton.bottomAnchor, constant: 60),
+            convertedAmountUnderLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43),
+            convertedAmountUnderLine.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43),
+            convertedAmountUnderLine.heightAnchor.constraint(equalToConstant: 1),
         ])
     }
 }
 
 final class DestinationCountryButton: UIButton {
-    private var topInset: CGFloat = 8
+    private var topInset: CGFloat = 3
     private var leftInset: CGFloat = 15
     private var rightInset: CGFloat = 15
-    private var bottomInset: CGFloat = 8
+    private var bottomInset: CGFloat = 3
     
     override func draw(_ rect: CGRect) {
         let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
