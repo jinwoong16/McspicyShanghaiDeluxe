@@ -45,9 +45,16 @@ final class ConvertedAmountLabel: UIView {
         destinationCountryButton.layer.cornerRadius = 5
         destinationCountryButton.layer.masksToBounds = true
         
+        fromLabel.text = "에서"
+        fromLabel.textColor = .secondaryTextColor
+        fromLabel.font = UIFont.interExtraLight(ofSize: 15)
+        
         NSLayoutConstraint.activate([
             destinationCountryButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
-            destinationCountryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 326) //뷰컨에 붙이고 나서 쉐브론 기준으로 다시 계산하기
+            destinationCountryButton.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 326), //뷰컨에 붙이고 나서 쉐브론 기준으로 다시 계산하기
+            
+            fromLabel.leadingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: 5),
+            fromLabel.bottomAnchor.constraint(equalTo: destinationCountryButton.bottomAnchor, constant: -8)
         ])
     }
 }
