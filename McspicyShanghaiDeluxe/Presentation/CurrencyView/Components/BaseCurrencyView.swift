@@ -140,11 +140,15 @@ final class BaseCurrencyTextField: UITextField, UITextFieldDelegate {
         }
         
         if let number = numberFormatter.number(from: filterdText) {
-            textField.text = numberFormatter.string(from: number)
+            if let formattedNumber = numberFormatter.string(from: number) {
+                textField.text = formattedNumber
+                print("formattedNumber: \(formattedNumber)")
+            } else {
+                textField.text = ""
+            }
         } else if newText.isEmpty {
             textField.text = ""
         }
-        
         return false
     }
 }
