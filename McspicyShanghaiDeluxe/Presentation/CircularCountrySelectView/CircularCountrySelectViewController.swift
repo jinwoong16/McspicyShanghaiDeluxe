@@ -63,7 +63,6 @@ final class CircularCountrySelectViewController: UIViewController {
     @objc private func rotateAction(with gesture: UIPanGestureRecognizer) {
         let translation = gesture.translation(in: view)
         
-        if abs(translation.y) > 10 {
         if abs(translation.y) > 50 {
             circularContryButtonsView.rotate(
                 to: (translation.y > 0 ? .up : .down)
