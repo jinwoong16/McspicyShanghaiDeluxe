@@ -13,6 +13,10 @@ final class CircularCountrySelectViewController: UIViewController {
         countries: countries
     )
     
+    private lazy var feedbackHandler: FeedbackHandler = {
+        FeedbackHandler(targetView: view)
+    }()
+    
     private let countries: [Country]
     
     init(countries: [Country]) {
@@ -60,9 +64,11 @@ final class CircularCountrySelectViewController: UIViewController {
         let translation = gesture.translation(in: view)
         
         if abs(translation.y) > 10 {
+        if abs(translation.y) > 50 {
             circularContryButtonsView.rotate(
                 to: (translation.y > 0 ? .up : .down)
             )
+            feedbackHandler.sendFeedback()
             
             gesture.setTranslation(.zero, in: view)
         }
