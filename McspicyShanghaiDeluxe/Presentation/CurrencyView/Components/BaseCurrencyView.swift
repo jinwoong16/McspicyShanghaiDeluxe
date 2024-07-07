@@ -123,10 +123,6 @@ final class BaseCurrencyTextField: UITextField, UITextFieldDelegate {
         self.rightView = rightPaddingView
         self.rightViewMode = .always
         
-        numberFormatter.numberStyle = .decimal
-        numberFormatter.groupingSeparator = ","
-        numberFormatter.groupingSize = 3
-        
         self.delegate = self
         
     }
@@ -141,23 +137,35 @@ final class BaseCurrencyTextField: UITextField, UITextFieldDelegate {
         guard let currentText = textField.text as NSString? else { return true }
         let newText = currentText.replacingCharacters(in: range, with: string)
         
-        let filterdText = newText.filter { "0123456789".contains($0) }
+        let filteredText = newText.filter { "0123456789".contains($0) }
         
-        if filterdText.count > textFieldmaxCharacters {
+        if filteredText.count > textFieldmaxCharacters {
             return false
         }
         
-        if let number = numberFormatter.number(from: filterdText) {
-            if let formattedNumber = numberFormatter.string(from: number) {
-                textField.text = formattedNumber
-                print("formattedNumber: \(formattedNumber)")
-            } else {
-                textField.text = ""
-            }
+        if let formattedNumber = filteredText.addThousandSeparators() {
+            textField.text = formattedNumber
+            print("formattedNumber: \(formattedNumber)")
         } else if newText.isEmpty {
             textField.text = ""
         }
         return false
+    }
+}
+
+extension String {
+    func addThousandSeparators() -> String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSeparator = ","
+        numberFormatter.groupingSize = 3
+        
+        if let number = numberFormatter.number(from: self),
+           let formattedNumber = numberFormatter.string(from: number) {
+            return formattedNumber
+        } else {
+            return nil
+        }
     }
 }
 
