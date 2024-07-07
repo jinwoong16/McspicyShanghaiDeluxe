@@ -44,13 +44,13 @@ final class CircularCountryButtonsView: UIView {
             y: bounds.height / 2
         )
         
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.1, delay: .zero) {
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
             self.countryButtons.enumerated().forEach { index, button in
                 let angle = self.theta * CGFloat(index) + self.angle
                 let half = button.frame.width / 2
                 
                 button.center = CGPoint(
-                    x: center.x + (half + self.minorAxis) * cos(angle) - self.minorAxis,
+                    x: center.x + (half + self.minorAxis) * cos(angle) - self.majorAxis,
                     y: center.y + (half + self.majorAxis) * sin(angle)
                 )
                 button.transform = CGAffineTransform(rotationAngle: angle)
