@@ -11,6 +11,7 @@ final class BaseCurrencyView: UIView {
     let baseCurrencyCountryLabel = BaseCurrencyCountryLabel()
     let baseCurrencyTextField = BaseCurrencyTextField()
     let exchangeIcon = UILabel()
+    let baseCurrencySuffixLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,11 +28,13 @@ final class BaseCurrencyView: UIView {
         
         addSubview(baseCurrencyCountryLabel)
         addSubview(baseCurrencyTextField)
+        addSubview(baseCurrencySuffixLabel)
         addSubview(exchangeIcon)
         
         baseCurrencyCountryLabel.translatesAutoresizingMaskIntoConstraints = false
         baseCurrencyTextField.translatesAutoresizingMaskIntoConstraints = false
         exchangeIcon.translatesAutoresizingMaskIntoConstraints = false
+        baseCurrencySuffixLabel.translatesAutoresizingMaskIntoConstraints = false
         
         baseCurrencyCountryLabel.text = "🇰🇷 대한민국"
         baseCurrencyCountryLabel.textColor = .white
@@ -40,9 +43,23 @@ final class BaseCurrencyView: UIView {
         baseCurrencyCountryLabel.layer.cornerRadius = 5
         baseCurrencyCountryLabel.layer.masksToBounds = true
         
+        baseCurrencySuffixLabel.text = " 원"
+        baseCurrencySuffixLabel.textColor = .white
+        baseCurrencySuffixLabel.font = UIFont.interRegular(ofSize: 36)
+        
         NSLayoutConstraint.activate([
             baseCurrencyCountryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
             baseCurrencyCountryLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
+            
+            baseCurrencyTextField.topAnchor.constraint(equalTo: baseCurrencyCountryLabel.bottomAnchor, constant: 40),
+            baseCurrencyTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43),
+            baseCurrencyTextField.widthAnchor.constraint(equalToConstant: 307),
+//            baseCurrencyTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43),
+            //이 코드로 바꾸고 싶은데 이걸로 바꾸면 화면이 찌그러져요 ...
+            
+            baseCurrencySuffixLabel.leadingAnchor.constraint(equalTo: baseCurrencyTextField.trailingAnchor, constant: -45),
+            baseCurrencySuffixLabel.bottomAnchor.constraint(equalTo: baseCurrencyTextField.bottomAnchor)
+            
         ])
     }
 }
@@ -66,10 +83,9 @@ final class BaseCurrencyCountryLabel: UILabel {
     }
 }
 
-// TODO: textfield 보더 밑변만 주기
 final class BaseCurrencyTextField: UITextField {
-    let baseCurrencySuffixLabel = UIButton()
     let textFieldmaxCharacters = 10
+    private let bottomBorder = CALayer()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,9 +98,12 @@ final class BaseCurrencyTextField: UITextField {
     }
     
     private func setupUI() {
-        addSubview(baseCurrencySuffixLabel)
-        
-        baseCurrencySuffixLabel.translatesAutoresizingMaskIntoConstraints = false
+        bottomBorder.backgroundColor = UIColor.white.cgColor
+        layer.addSublayer(bottomBorder)
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        bottomBorder.frame = CGRect(x: 0, y: frame.height + 5, width: frame.width, height: 1)
     }
 }
 
