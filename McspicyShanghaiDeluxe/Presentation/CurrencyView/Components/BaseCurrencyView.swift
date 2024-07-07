@@ -10,7 +10,7 @@ import UIKit
 final class BaseCurrencyView: UIView {
     let baseCurrencyCountryLabel = BaseCurrencyCountryLabel()
     let baseCurrencyTextField = BaseCurrencyTextField()
-    let exchangeIcon = UILabel()
+    let exchangeIcon = UIImageView()
     let baseCurrencySuffixLabel = UILabel()
     
     override init(frame: CGRect) {
@@ -33,8 +33,8 @@ final class BaseCurrencyView: UIView {
         
         baseCurrencyCountryLabel.translatesAutoresizingMaskIntoConstraints = false
         baseCurrencyTextField.translatesAutoresizingMaskIntoConstraints = false
-        exchangeIcon.translatesAutoresizingMaskIntoConstraints = false
         baseCurrencySuffixLabel.translatesAutoresizingMaskIntoConstraints = false
+        exchangeIcon.translatesAutoresizingMaskIntoConstraints = false
         
         baseCurrencyCountryLabel.text = "🇰🇷 대한민국"
         baseCurrencyCountryLabel.textColor = .white
@@ -47,6 +47,10 @@ final class BaseCurrencyView: UIView {
         baseCurrencySuffixLabel.textColor = .white
         baseCurrencySuffixLabel.font = UIFont.interRegular(ofSize: 36)
         
+        exchangeIcon.image = UIImage(systemName: "chevron.down")
+        exchangeIcon.tintColor = UIColor.secondaryTextColor
+        exchangeIcon.contentMode = .scaleAspectFit
+        
         NSLayoutConstraint.activate([
             baseCurrencyCountryLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 36),
             baseCurrencyCountryLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 60),
@@ -58,7 +62,12 @@ final class BaseCurrencyView: UIView {
             //이 코드로 바꾸고 싶은데 이걸로 바꾸면 화면이 찌그러져요 ...
             
             baseCurrencySuffixLabel.leadingAnchor.constraint(equalTo: baseCurrencyTextField.trailingAnchor, constant: -45),
-            baseCurrencySuffixLabel.bottomAnchor.constraint(equalTo: baseCurrencyTextField.bottomAnchor, constant: -2)
+            baseCurrencySuffixLabel.bottomAnchor.constraint(equalTo: baseCurrencyTextField.bottomAnchor, constant: -2),
+            
+            exchangeIcon.topAnchor.constraint(equalTo: baseCurrencyTextField.bottomAnchor, constant: 30),
+            exchangeIcon.centerXAnchor.constraint(equalTo: centerXAnchor),
+            exchangeIcon.widthAnchor.constraint(equalToConstant: 22),
+            exchangeIcon.heightAnchor.constraint(equalToConstant: 22)
             
         ])
     }
