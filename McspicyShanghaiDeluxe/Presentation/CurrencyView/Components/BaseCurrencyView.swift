@@ -54,11 +54,11 @@ final class BaseCurrencyView: UIView {
             baseCurrencyTextField.topAnchor.constraint(equalTo: baseCurrencyCountryLabel.bottomAnchor, constant: 40),
             baseCurrencyTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43),
             baseCurrencyTextField.widthAnchor.constraint(equalToConstant: 307),
-//            baseCurrencyTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43),
+            //            baseCurrencyTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -43),
             //이 코드로 바꾸고 싶은데 이걸로 바꾸면 화면이 찌그러져요 ...
             
             baseCurrencySuffixLabel.leadingAnchor.constraint(equalTo: baseCurrencyTextField.trailingAnchor, constant: -45),
-            baseCurrencySuffixLabel.bottomAnchor.constraint(equalTo: baseCurrencyTextField.bottomAnchor)
+            baseCurrencySuffixLabel.bottomAnchor.constraint(equalTo: baseCurrencyTextField.bottomAnchor, constant: -2)
             
         ])
     }
@@ -85,6 +85,10 @@ final class BaseCurrencyCountryLabel: UILabel {
 
 final class BaseCurrencyTextField: UITextField {
     let textFieldmaxCharacters = 10
+    let placeholderAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.lightGray,
+        .font: UIFont.interRegular(ofSize: 40)
+    ]
     private let bottomBorder = CALayer()
     
     override init(frame: CGRect) {
@@ -100,11 +104,23 @@ final class BaseCurrencyTextField: UITextField {
     private func setupUI() {
         bottomBorder.backgroundColor = UIColor.white.cgColor
         layer.addSublayer(bottomBorder)
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        bottomBorder.frame = CGRect(x: 0, y: frame.height + 5, width: frame.width, height: 1)
-    }
+        
+        self.attributedPlaceholder = NSAttributedString(string: "0", attributes: placeholderAttributes)
+        self.font = UIFont.interLight(ofSize: 36)
+        self.textColor = .white
+        self.textAlignment = .right
+        self.keyboardType = .numberPad
+        
+        let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: self.frame.height))
+        self.rightView = rightPaddingView
+        self.rightViewMode = .always
+    
+    
+}
+override func layoutSubviews() {
+    super.layoutSubviews()
+    bottomBorder.frame = CGRect(x: 0, y: frame.height + 5, width: frame.width, height: 1)
+}
 }
 
 #Preview {
