@@ -354,8 +354,8 @@
 			isa = PBXGroup;
 			children = (
 				04ACEA2B2C36F2D400982106 /* Extensions */,
-				836D5C982C32A91E000C7DDA /* IndexView */,
 				836D5C972C32A820000C7DDA /* CurrencyView */,
+				836D5C982C32A91E000C7DDA /* IndexView */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
