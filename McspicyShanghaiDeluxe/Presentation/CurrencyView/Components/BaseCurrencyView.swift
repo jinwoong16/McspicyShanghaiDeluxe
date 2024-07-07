@@ -83,13 +83,14 @@ final class BaseCurrencyCountryLabel: UILabel {
     }
 }
 
-final class BaseCurrencyTextField: UITextField {
+final class BaseCurrencyTextField: UITextField, UITextFieldDelegate {
     let textFieldmaxCharacters = 10
-    let placeholderAttributes: [NSAttributedString.Key: Any] = [
+    private let placeholderAttributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: UIColor.lightGray,
         .font: UIFont.interRegular(ofSize: 40)
     ]
     private let bottomBorder = CALayer()
+    private let numberFormatter = NumberFormatter()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -111,18 +112,44 @@ final class BaseCurrencyTextField: UITextField {
         self.textAlignment = .right
         self.keyboardType = .numberPad
         
+        // 금액 입력되는 오른쪽에 패딩을 주어서 "원"이랑 겹치지 않게 했어요.
         let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 45, height: self.frame.height))
         self.rightView = rightPaddingView
         self.rightViewMode = .always
+        
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.groupingSeparator = ","
+        numberFormatter.groupingSize = 3
+        
+        self.delegate = self
+        
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        bottomBorder.frame = CGRect(x: 0, y: frame.height + 5, width: frame.width, height: 1)
+    }
     
-    
-}
-override func layoutSubviews() {
-    super.layoutSubviews()
-    bottomBorder.frame = CGRect(x: 0, y: frame.height + 5, width: frame.width, height: 1)
-}
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let currentText = textField.text as NSString? else { return true }
+        let newText = currentText.replacingCharacters(in: range, with: string)
+        
+        let filterdText = newText.filter { "0123456789".contains($0) }
+        
+        if filterdText.count > textFieldmaxCharacters {
+            return false
+        }
+        
+        if let number = numberFormatter.number(from: filterdText) {
+            textField.text = numberFormatter.string(from: number)
+        } else if newText.isEmpty {
+            textField.text = ""
+        }
+        
+        return false
+    }
 }
 
 #Preview {
     BaseCurrencyView()
 }
+
