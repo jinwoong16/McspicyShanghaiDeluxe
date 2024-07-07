@@ -30,6 +30,7 @@ final class CircularCountrySelectViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        configureGesture()
     }
     
     private func configureUI() {
@@ -45,5 +46,25 @@ final class CircularCountrySelectViewController: UIViewController {
             circularContryButtonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             circularContryButtonsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
+    }
+    
+    private func configureGesture() {
+        let panGesture = UIPanGestureRecognizer(
+            target: self,
+            action: #selector(rotateAction(with:))
+        )
+        view.addGestureRecognizer(panGesture)
+    }
+    
+    @objc private func rotateAction(with gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: view)
+        
+        if abs(translation.y) > 10 {
+            circularContryButtonsView.rotate(
+                to: (translation.y > 0 ? .up : .down)
+            )
+            
+            gesture.setTranslation(.zero, in: view)
+        }
     }
 }

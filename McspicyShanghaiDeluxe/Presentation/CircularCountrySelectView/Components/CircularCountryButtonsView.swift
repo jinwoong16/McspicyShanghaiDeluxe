@@ -8,12 +8,21 @@
 import UIKit
 
 final class CircularCountryButtonsView: UIView {
+    enum RotateDirection: CGFloat {
+        case up = -1
+        case down = 1
+    }
+    
     private let countryButtons: [CountryButton]
     
     private var angle: CGFloat = 0
     private let minorAxis: CGFloat = 250
     private let majorAxis: CGFloat = 320
     private var theta: CGFloat = 0
+    
+    private var rotateAngle: CGFloat {
+        2 * .pi / CGFloat(countryButtons.count)
+    }
     
     init(countries: [Country]) {
         self.countryButtons = countries.map(CountryButton.init(country:))
@@ -46,6 +55,11 @@ final class CircularCountryButtonsView: UIView {
                 button.transform = CGAffineTransform(rotationAngle: angle)
             }
         }
+    }
+    
+    func rotate(to direction: RotateDirection) {
+        self.angle += rotateAngle * direction.rawValue
+        setNeedsLayout()
     }
     
     private func configureuUI() {
