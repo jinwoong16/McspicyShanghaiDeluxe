@@ -63,6 +63,10 @@ final class ConvertedAmountLabel: UIView {
         fromLabel.textColor = .secondaryTextColor
         fromLabel.font = UIFont.interExtraLight(ofSize: 15)
         
+        convertedAmountSuffixLabel.text = " 달러"
+        convertedAmountSuffixLabel.textColor = .white
+        convertedAmountSuffixLabel.font = UIFont.interRegular(ofSize: 36)
+        
         convertedAmountUnderLine.backgroundColor = .secondaryTextColor
         
         destinationBackground.backgroundColor = .defaultBoxColor
@@ -76,8 +80,11 @@ final class ConvertedAmountLabel: UIView {
             chevronRight.centerYAnchor.constraint(equalTo: destinationCountryButton.centerYAnchor, constant: 0),
             chevronRight.trailingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: -10),
             
-            fromLabel.leadingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: 5),
+            fromLabel.leadingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: 10),
             fromLabel.bottomAnchor.constraint(equalTo: destinationCountryButton.bottomAnchor, constant: -8),
+            
+            convertedAmountSuffixLabel.trailingAnchor.constraint(equalTo: convertedAmountUnderLine.trailingAnchor, constant: -5),
+            convertedAmountSuffixLabel.bottomAnchor.constraint(equalTo: convertedAmountUnderLine.bottomAnchor, constant: -2),
             
             convertedAmountUnderLine.topAnchor.constraint(equalTo: destinationCountryButton.bottomAnchor, constant: 60),
             convertedAmountUnderLine.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 43),
