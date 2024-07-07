@@ -19,8 +19,7 @@ final class BaseCurrencyView: UIView {
     }
     
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        setupUI()
+        fatalError("init(coder:) has not been implemented")
     }
     
     private func setupUI() {
