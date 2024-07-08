@@ -15,6 +15,7 @@ final class CircularCountrySelectViewController: UIViewController {
     // MARK: - Components
     private lazy var circularContryButtonsView = CircularCountryButtonsView(
         countries: countries,
+        currentCountry: currentCountry,
         frame: view.bounds
     )
     
@@ -33,10 +34,12 @@ final class CircularCountrySelectViewController: UIViewController {
     }()
     
     private let countries: [Country]
+    private var currentCountry: Country?
     var delegate: CountryReceivable?
     
-    init(countries: [Country]) {
+    init(countries: [Country], currentCountry: Country? = nil) {
         self.countries = countries
+        self.currentCountry = currentCountry
         
         super.init(nibName: nil, bundle: nil)
     }
