@@ -95,6 +95,7 @@ final class CircularCountryButtonsView: UIView {
             addSubview(countryButton)
             
         }
+        countryButtons.first?.turnOn()
         theta = 2 * .pi / CGFloat(countryButtons.count)
     }
 }
