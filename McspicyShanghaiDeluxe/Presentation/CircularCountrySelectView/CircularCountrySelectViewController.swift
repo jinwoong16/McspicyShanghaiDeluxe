@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol CountryReceivable: AnyObject {
+    func send(country: Country)
+}
+
 final class CircularCountrySelectViewController: UIViewController {
     // MARK: - Components
     private lazy var circularContryButtonsView = CircularCountryButtonsView(
@@ -28,6 +32,7 @@ final class CircularCountrySelectViewController: UIViewController {
     }()
     
     private let countries: [Country]
+    var delegate: CountryReceivable?
     
     init(countries: [Country]) {
         self.countries = countries
