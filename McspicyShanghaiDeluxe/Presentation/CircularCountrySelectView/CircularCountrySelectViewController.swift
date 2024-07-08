@@ -43,12 +43,21 @@ final class CircularCountrySelectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupBlurEffect()
         configureUI()
         configureGesture()
+        configureButton()
+    }
+    
+    private func setupBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.bounds
+        self.view.addSubview(blurEffectView)
     }
     
     private func configureUI() {
-        view.backgroundColor = .white
+        view.backgroundColor = .clear
         
         view.addSubview(circularContryButtonsView)
         view.addSubview(selectButton)
