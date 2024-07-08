@@ -35,34 +35,3 @@ extension UIColor {
     static let searchBarColor = UIColor(hex: "646464") // 서큘러뷰 검색바 컬러
     static let addButton = UIColor(hex: "D6D6D6") // 서큘러뷰 변경하기 버튼
 }
-
-// 탭바 투명도와 블러값 적용
-extension UITabBarController {
-    
-    func configureTabBarAppearance() {
-        let tabBar = self.tabBar
-        
-        tabBar.backgroundColor = UIColor.black.withAlphaComponent(0.9)
-        
-        let blurEffect = UIBlurEffect(style: .dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = tabBar.bounds
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        tabBar.insertSubview(blurEffectView, at: 0)
-        
-        let appearance = UITabBarAppearance()
-        appearance.configureWithDefaultBackground()
-        appearance.backgroundEffect = blurEffect
-        
-        appearance.stackedLayoutAppearance.selected.iconColor = UIColor.secondaryTextColor
-        appearance.stackedLayoutAppearance.selected.titleTextAttributes = [.foregroundColor: UIColor.secondaryTextColor]
-        
-        appearance.stackedLayoutAppearance.normal.iconColor = UIColor.unselectedIcon
-        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.unselectedIcon]
-        
-        tabBar.standardAppearance = appearance
-        tabBar.scrollEdgeAppearance = appearance
-        
-    }
-}
