@@ -19,7 +19,7 @@ final class CircularCountryButtonsView: UIView {
     private let minorAxis: CGFloat = 250
     private let majorAxis: CGFloat = 320
     private var theta: CGFloat = 0
-    private var previousIndex: Int = 0
+    private var currentCountryIndex: Int = 0
     
     private var rotateAngle: CGFloat {
         2 * .pi / CGFloat(countryButtons.count)
@@ -72,11 +72,11 @@ final class CircularCountryButtonsView: UIView {
             with: Int(round(angle / rotateAngle)) % countryCount
         )
         
-        if index != previousIndex {
-            countryButtons[previousIndex].turnOff()
+        if index != currentCountryIndex {
+            countryButtons[currentCountryIndex].turnOff()
             countryButtons[index].turnOn()
             
-            previousIndex = index
+            currentCountryIndex = index
         }
     }
     
