@@ -21,10 +21,6 @@ final class CircularCountryButtonsView: UIView {
     private var theta: CGFloat = 0
     private var currentCountryIndex: Int = 0
     
-    private var rotateAngle: CGFloat {
-        2 * .pi / CGFloat(countryButtons.count)
-    }
-    
     private var countryCount: Int {
         countryButtons.count
     }
