@@ -89,11 +89,21 @@ final class CircularCountryButtonsView: UIView {
     }
     
     private func configureuUI() {
-        countryButtons.forEach { countryButton in
+        countryButtons.enumerated().forEach { index, countryButton in
             countryButton.sizeToFit()
+            countryButton.addAction(
+                UIAction { [weak self] action in
+                    guard let self else {
+                        return
+                    }
+                    self.countryButtons[self.currentCountryIndex].turnOff()
+                    self.countryButtons[index].turnOn()
+                    self.currentCountryIndex = index
+                },
+                for: .touchUpInside
+            )
             
             addSubview(countryButton)
-            
         }
         countryButtons.first?.turnOn()
         theta = 2 * .pi / CGFloat(countryButtons.count)
