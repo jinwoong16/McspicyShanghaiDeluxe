@@ -13,6 +13,16 @@ final class CircularCountrySelectViewController: UIViewController {
         countries: countries
     )
     
+    private lazy var selectButton: UIButton = {
+        var configuration = UIButton.Configuration.filled()
+        configuration.title = "변경하기"
+        configuration.titlePadding = 20
+        configuration.baseBackgroundColor = .addButton
+        configuration.baseForegroundColor = .black
+        
+        return UIButton(configuration: configuration)
+    }()
+    
     private lazy var feedbackHandler: FeedbackHandler = {
         FeedbackHandler(targetView: view)
     }()
@@ -41,14 +51,21 @@ final class CircularCountrySelectViewController: UIViewController {
         view.backgroundColor = .white
         
         view.addSubview(circularContryButtonsView)
+        view.addSubview(selectButton)
         
         circularContryButtonsView.translatesAutoresizingMaskIntoConstraints = false
+        selectButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             circularContryButtonsView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
             circularContryButtonsView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor),
             circularContryButtonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             circularContryButtonsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
+            selectButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            selectButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
+            selectButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
     
@@ -58,6 +75,18 @@ final class CircularCountrySelectViewController: UIViewController {
             action: #selector(rotateAction(with:))
         )
         view.addGestureRecognizer(panGesture)
+    }
+    
+    private func configureButton() {
+        selectButton
+            .addAction(
+                UIAction { [weak self] _ in
+                    guard let self else { return }
+                    self.delegate?.send(country: self.circularContryButtonsView.selectedCountry)
+                    self.dismiss(animated: true)
+                },
+                for: .touchUpInside
+            )
     }
     
     @objc private func rotateAction(with gesture: UIPanGestureRecognizer) {
