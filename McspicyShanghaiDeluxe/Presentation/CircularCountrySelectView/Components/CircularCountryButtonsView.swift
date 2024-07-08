@@ -33,42 +33,24 @@ final class CircularCountryButtonsView: UIView {
         countryButtons[currentCountryIndex].country
     }
     
-    init(countries: [Country]) {
+    init(countries: [Country], frame: CGRect = .zero) {
         self.countryButtons = countries.map(CountryButton.init(country:))
-        super.init(frame: .zero)
+        super.init(frame: frame)
         
         configureuUI()
+        setPosition()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        let center = CGPoint(
-            x: bounds.width / 2,
-            y: bounds.height / 2
-        )
-        
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
-            self.countryButtons.enumerated().forEach { index, button in
-                let angle = self.theta * CGFloat(index) + self.angle
-                let half = button.frame.width / 2
-                
-                button.center = CGPoint(
-                    x: center.x + (half + self.minorAxis) * cos(angle) - self.minorAxis * 1.2,
-                    y: center.y + (half + self.majorAxis) * sin(angle)
-                )
-                button.transform = CGAffineTransform(rotationAngle: angle)
-            }
-        }
-    }
-    
     func rotate(to direction: RotateDirection) {
         self.angle += rotateAngle * direction.rawValue
-        setNeedsLayout()
+        
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
+            self.setPosition()
+        }
     }
     
     func updateCheckmark() {
@@ -81,6 +63,24 @@ final class CircularCountryButtonsView: UIView {
             countryButtons[index].turnOn()
             
             currentCountryIndex = index
+        }
+    }
+    
+    private func setPosition() {
+        let center = CGPoint(
+            x: bounds.width / 2,
+            y: bounds.height / 2
+        )
+        
+        countryButtons.enumerated().forEach { index, button in
+            let angle = theta * CGFloat(index) + angle
+            let half = button.frame.width / 2
+            
+            button.center = CGPoint(
+                x: center.x + (half + minorAxis) * cos(angle) - minorAxis * 1.2,
+                y: center.y + (half + majorAxis) * sin(angle)
+            )
+            button.transform = CGAffineTransform(rotationAngle: angle)
         }
     }
     

@@ -14,7 +14,8 @@ protocol CountryReceivable: AnyObject {
 final class CircularCountrySelectViewController: UIViewController {
     // MARK: - Components
     private lazy var circularContryButtonsView = CircularCountryButtonsView(
-        countries: countries
+        countries: countries,
+        frame: view.bounds
     )
     
     private lazy var selectButton: UIButton = {
