@@ -46,7 +46,7 @@ final class CircularCountryButtonsView: UIView {
     }
     
     func rotate(to direction: RotateDirection) {
-        self.angle += rotateAngle * direction.rawValue
+        self.angle += theta * direction.rawValue
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
             self.setPosition()
@@ -55,7 +55,7 @@ final class CircularCountryButtonsView: UIView {
     
     func updateCheckmark() {
         let index = calculateIndex(
-            with: Int(round(angle / rotateAngle)) % countryCount
+            with: Int(round(angle / theta)) % countryCount
         )
         
         if index != currentCountryIndex {
