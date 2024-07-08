@@ -45,7 +45,7 @@ final class CircularCountryButtonsView: UIView {
         super.init(frame: frame)
         
         configureuUI()
-        setPosition()
+        setPosition(to: 0)
     }
     
     required init?(coder: NSCoder) {
@@ -56,7 +56,7 @@ final class CircularCountryButtonsView: UIView {
         self.angle += theta * direction.rawValue
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
-            self.setPosition()
+            self.setPosition(to: self.angle)
         }
     }
     
@@ -73,7 +73,7 @@ final class CircularCountryButtonsView: UIView {
         }
     }
     
-    private func setPosition() {
+    private func setPosition(to angle: CGFloat) {
         let center = CGPoint(
             x: bounds.width / 2,
             y: bounds.height / 2
