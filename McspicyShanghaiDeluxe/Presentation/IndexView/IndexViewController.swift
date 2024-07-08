@@ -61,17 +61,48 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         return label
     }()
     
-    private var priceHStackView: UIStackView = UIStackView()
-    private var priceVStackView: UIStackView = UIStackView()
+    private let textField: UITextField = {
+        let textField = UITextField()
+        textField.keyboardType = .numberPad
+        textField.placeholder = "0"
+        let placeholderAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.lightGray,
+            .font: UIFont.systemFont(ofSize: 36)
+        ]
+        textField.attributedPlaceholder = NSAttributedString(string: "0", attributes: placeholderAttributes)
+        textField.textColor = .white
+        textField.font = UIFont.systemFont(ofSize: 36)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textAlignment = .right
+        return textField
+    }()
+    
+    private let wonLabel: UILabel = {
+        let label = UILabel()
+        label.text = "원"
+        label.textColor = .white
+        label.font = UIFont.systemFont(ofSize: 36)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private let conversionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "으로"
+        label.font = UIFont.systemFont(ofSize: 13)
+        label.textColor = UIColor.gray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private var tableView: UITableView = UITableView()
-    private let purchaseLabel: UILabel = UILabel()
+    //    private let purchaseLabel: UILabel = UILabel()
     
     // MARK: - LifeCycles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "232123")
         autoLayout()
-        setupPriceViews()
         setupEmptyView()
         tableView.delegate = self
         tableView.dataSource = self
@@ -107,7 +138,7 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         view.addSubview(containerView)
         
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: priceVStackView.bottomAnchor, constant: 50),
+            containerView.topAnchor.constraint(equalTo: wonLabel.bottomAnchor, constant: 50),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.widthAnchor.constraint(equalToConstant: 340),
             containerView.heightAnchor.constraint(equalToConstant: 300),
@@ -116,68 +147,26 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
             label.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
         ])
     }
-
     
     private func autoLayout() {
         view.addSubview(koreaLabel)
+        view.addSubview(textField)
+        view.addSubview(wonLabel)
+        view.addSubview(conversionLabel)
         
         NSLayoutConstraint.activate([
             koreaLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            koreaLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150)
-        ])
-    }
-    
-    private func setupPriceViews() {
-        let textField = UITextField()
-        textField.keyboardType = .numberPad
-        textField.placeholder = "0"
-        let placeholderAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.lightGray,
-            .font: UIFont.systemFont(ofSize: 36)
-        ]
-        textField.attributedPlaceholder = NSAttributedString(string: "0", attributes: placeholderAttributes)
-        textField.textColor = .white
-        textField.font = UIFont.systemFont(ofSize: 36)
-        textField.delegate = self
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.textAlignment = .right
-        
-        let wonLabel = UILabel()
-        wonLabel.text = "원"
-        wonLabel.textColor = .white
-        wonLabel.font = UIFont.systemFont(ofSize: 36)
-        wonLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        // placeholder "0", "원"을 HStack으로 묶음
-        priceHStackView.addArrangedSubview(textField)
-        priceHStackView.addArrangedSubview(wonLabel)
-        priceHStackView.axis = .horizontal
-        priceHStackView.distribution = .fill
-        priceHStackView.alignment = .fill
-        priceHStackView.spacing = 16
-        
-        let label = UILabel()
-        label.text = "으로"
-        label.font = UIFont.systemFont(ofSize: 13)
-        label.textColor = UIColor.gray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        priceVStackView.axis = .vertical
-        priceVStackView.alignment = .trailing
-        priceVStackView.distribution = .fill
-        priceVStackView.spacing = 4
-        
-        // placeholder "0", "원"을 묶은 HStack + "으로" 를 VStack으로 다시 묶음
-        priceVStackView.addArrangedSubview(priceHStackView)
-        priceVStackView.addArrangedSubview(label)
-        
-        view.addSubview(priceVStackView)
-        
-        priceVStackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            priceVStackView.topAnchor.constraint(equalTo: koreaLabel.bottomAnchor, constant: 16),
-            priceVStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            priceVStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            koreaLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            
+            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            textField.trailingAnchor.constraint(equalTo: wonLabel.leadingAnchor, constant: -8),
+            textField.topAnchor.constraint(equalTo: koreaLabel.bottomAnchor, constant: 16),
+            
+            wonLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            wonLabel.topAnchor.constraint(equalTo: koreaLabel.bottomAnchor, constant: 16),
+            
+            conversionLabel.trailingAnchor.constraint(equalTo: wonLabel.trailingAnchor),
+            conversionLabel.topAnchor.constraint(equalTo: wonLabel.bottomAnchor, constant: 4)
         ])
         
         view.addSubview(tableView)
@@ -185,7 +174,7 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         tableView.backgroundColor = UIColor(hex: "232123")
         
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: priceVStackView.bottomAnchor, constant: 16),
+            tableView.topAnchor.constraint(equalTo: conversionLabel.bottomAnchor, constant: 16),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
@@ -250,6 +239,5 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
 }
 
 #Preview {
-    return UINavigationController(rootViewController:
-        IndexViewController())
+    return UINavigationController(rootViewController: IndexViewController())
 }
