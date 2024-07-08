@@ -33,8 +33,19 @@ final class CircularCountryButtonsView: UIView {
         countryButtons[currentCountryIndex].country
     }
     
-    init(countries: [Country], frame: CGRect = .zero) {
-        self.countryButtons = countries.map(CountryButton.init(country:))
+    init(
+        countries: [Country],
+        currentCountry: Country? = nil,
+        frame: CGRect = .zero
+    ) {
+        if let currentCountry,
+           let index = countries.firstIndex(where: { $0.name == currentCountry.name }) {
+            self.countryButtons = countries
+                .rotated(by: index)
+                .map(CountryButton.init(country:))
+        } else {
+            self.countryButtons = countries.map(CountryButton.init(country:))
+        }
         super.init(frame: frame)
         
         configureuUI()
