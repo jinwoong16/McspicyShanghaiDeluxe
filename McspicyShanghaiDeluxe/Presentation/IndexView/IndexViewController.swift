@@ -52,7 +52,8 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         "싱가포르": 5.18
     ]
     
-    private let koreaLabel: UILabel = {
+    //koreaLabel이었던 곳입니다! 버튼으로 변경하신 후 baseCurrencyCountryButton 로 해주시면 됩니다 :)
+    private let baseCurrencyCountryLabel: UILabel = {
         let label = UILabel()
         label.text = "🇰🇷 대한민국"
         label.font = UIFont.systemFont(ofSize: 16)
@@ -61,7 +62,7 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         return label
     }()
     
-    private let textField: UITextField = {
+    private let baseCurrencyTextField: UITextField = {
         let textField = UITextField()
         textField.keyboardType = .numberPad
         textField.placeholder = "0"
@@ -77,7 +78,7 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         return textField
     }()
     
-    private let wonLabel: UILabel = {
+    private let baseCurrencySuffixLabel: UILabel = {
         let label = UILabel()
         label.text = "원"
         label.textColor = .white
@@ -138,7 +139,7 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
         view.addSubview(containerView)
         
         NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: wonLabel.bottomAnchor, constant: 50),
+            containerView.topAnchor.constraint(equalTo: baseCurrencySuffixLabel.bottomAnchor, constant: 50),
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.widthAnchor.constraint(equalToConstant: 340),
             containerView.heightAnchor.constraint(equalToConstant: 300),
@@ -149,24 +150,24 @@ class IndexViewController: UIViewController, UITextFieldDelegate, UITableViewDat
     }
     
     private func autoLayout() {
-        view.addSubview(koreaLabel)
-        view.addSubview(textField)
-        view.addSubview(wonLabel)
+        view.addSubview(baseCurrencyCountryLabel)
+        view.addSubview(baseCurrencyTextField)
+        view.addSubview(baseCurrencySuffixLabel)
         view.addSubview(conversionLabel)
         
         NSLayoutConstraint.activate([
-            koreaLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            koreaLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+            baseCurrencyCountryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            baseCurrencyCountryLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
             
-            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
-            textField.trailingAnchor.constraint(equalTo: wonLabel.leadingAnchor, constant: -8),
-            textField.topAnchor.constraint(equalTo: koreaLabel.bottomAnchor, constant: 16),
+            baseCurrencyTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 32),
+            baseCurrencyTextField.trailingAnchor.constraint(equalTo: baseCurrencySuffixLabel.leadingAnchor, constant: -8),
+            baseCurrencyTextField.topAnchor.constraint(equalTo: baseCurrencyCountryLabel.bottomAnchor, constant: 16),
             
-            wonLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
-            wonLabel.topAnchor.constraint(equalTo: koreaLabel.bottomAnchor, constant: 16),
+            baseCurrencySuffixLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -32),
+            baseCurrencySuffixLabel.topAnchor.constraint(equalTo: baseCurrencyCountryLabel.bottomAnchor, constant: 16),
             
-            conversionLabel.trailingAnchor.constraint(equalTo: wonLabel.trailingAnchor),
-            conversionLabel.topAnchor.constraint(equalTo: wonLabel.bottomAnchor, constant: 4)
+            conversionLabel.trailingAnchor.constraint(equalTo: baseCurrencySuffixLabel.trailingAnchor),
+            conversionLabel.topAnchor.constraint(equalTo: baseCurrencySuffixLabel.bottomAnchor, constant: 4)
         ])
         
         view.addSubview(tableView)
