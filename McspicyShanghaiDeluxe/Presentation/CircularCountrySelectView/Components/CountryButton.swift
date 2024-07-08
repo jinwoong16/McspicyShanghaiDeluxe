@@ -11,6 +11,7 @@ final class CountryButton: UIButton {
     private lazy var countryLabel: UILabel = {
         let countryLabel = UILabel()
         countryLabel.font = .interLight(ofSize: 17)
+        countryLabel.textColor = .white
         
         return countryLabel
     }()
@@ -19,6 +20,7 @@ final class CountryButton: UIButton {
         let checkImageView = UIImageView()
         checkImageView.image = UIImage(systemName: "checkmark")
         checkImageView.alpha = 0
+        checkImageView.tintColor = .mainColor
         
         return checkImageView
     }()
