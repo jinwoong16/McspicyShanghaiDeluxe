@@ -29,6 +29,10 @@ final class CircularCountryButtonsView: UIView {
         countryButtons.count
     }
     
+    var selectedCountry: Country {
+        countryButtons[currentCountryIndex].country
+    }
+    
     init(countries: [Country]) {
         self.countryButtons = countries.map(CountryButton.init(country:))
         super.init(frame: .zero)
