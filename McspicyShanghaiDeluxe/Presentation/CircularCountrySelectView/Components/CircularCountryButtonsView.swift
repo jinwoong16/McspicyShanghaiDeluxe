@@ -54,7 +54,7 @@ final class CircularCountryButtonsView: UIView {
                 let half = button.frame.width / 2
                 
                 button.center = CGPoint(
-                    x: center.x + (half + self.minorAxis) * cos(angle) - self.majorAxis,
+                    x: center.x + (half + self.minorAxis) * cos(angle) - self.minorAxis * 1.2,
                     y: center.y + (half + self.majorAxis) * sin(angle)
                 )
                 button.transform = CGAffineTransform(rotationAngle: angle)
