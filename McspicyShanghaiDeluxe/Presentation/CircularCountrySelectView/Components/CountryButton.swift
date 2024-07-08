@@ -93,6 +93,5 @@ final class CountryButton: UIButton {
         }
         
         animator.startAnimation()
-        
     }
 }
