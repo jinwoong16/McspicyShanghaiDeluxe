@@ -75,8 +75,8 @@ final class CircularCountrySelectViewController: UIViewController {
         selectButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            circularContryButtonsView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
-            circularContryButtonsView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor),
+            circularContryButtonsView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            circularContryButtonsView.heightAnchor.constraint(equalTo: view.heightAnchor),
             circularContryButtonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             circularContryButtonsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
