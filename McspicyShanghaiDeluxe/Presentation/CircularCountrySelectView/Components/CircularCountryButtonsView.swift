@@ -25,6 +25,10 @@ final class CircularCountryButtonsView: UIView {
         2 * .pi / CGFloat(countryButtons.count)
     }
     
+    private var countryCount: Int {
+        countryButtons.count
+    }
+    
     init(countries: [Country]) {
         self.countryButtons = countries.map(CountryButton.init(country:))
         super.init(frame: .zero)
@@ -64,18 +68,23 @@ final class CircularCountryButtonsView: UIView {
     }
     
     func updateCheckmark() {
-        let currentAngle = Int(round(angle * 180 / .pi)) % 360
-        let index: Int
-        if currentAngle < 0 {
-            index = (30 - (360 + currentAngle) / 12) % 30
-        } else {
-            index = (30 - currentAngle / 12) % 30
-        }
+        let index = calculateIndex(
+            with: Int(round(angle / rotateAngle)) % countryCount
+        )
         
         if index != previousIndex {
             countryButtons[previousIndex].turnOff()
             countryButtons[index].turnOn()
+            
             previousIndex = index
+        }
+    }
+    
+    private func calculateIndex(with position: Int) -> Int {
+        if position <= 0 {
+            return abs(position)
+        } else {
+            return countryCount - position
         }
     }
     
