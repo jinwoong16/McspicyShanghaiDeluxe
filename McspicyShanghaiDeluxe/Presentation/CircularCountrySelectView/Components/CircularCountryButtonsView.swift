@@ -103,7 +103,7 @@ final class CircularCountryButtonsView: UIView {
         countryButtons.enumerated().forEach { index, countryButton in
             countryButton.sizeToFit()
             countryButton.addAction(
-                UIAction { [weak self] action in
+                UIAction { [weak self] _ in
                     guard let self else {
                         return
                     }
