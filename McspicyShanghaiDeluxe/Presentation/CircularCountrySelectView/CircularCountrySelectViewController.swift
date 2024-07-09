@@ -63,7 +63,7 @@ final class CircularCountrySelectViewController: UIViewController {
         setupBlurEffect()
         configureUI()
         configureGesture()
-        configureButton()
+        configureButtons()
     }
     
     private func setupBlurEffect() {
@@ -108,7 +108,7 @@ final class CircularCountrySelectViewController: UIViewController {
         view.addGestureRecognizer(panGesture)
     }
     
-    private func configureButton() {
+    private func configureButtons() {
         selectButton
             .addAction(
                 UIAction { [weak self] _ in
