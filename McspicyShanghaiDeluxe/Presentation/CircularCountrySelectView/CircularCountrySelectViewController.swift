@@ -19,6 +19,14 @@ final class CircularCountrySelectViewController: UIViewController {
         frame: view.bounds
     )
     
+    private lazy var closeButton: UIButton = {
+        var configuration = UIButton.Configuration.plain()
+        configuration.image = UIImage(systemName: "xmark")
+        configuration.baseForegroundColor = .white
+        
+        return UIButton(configuration: configuration)
+    }()
+    
     private lazy var selectButton: UIButton = {
         var configuration = UIButton.Configuration.filled()
         configuration.title = "변경하기"
@@ -69,9 +77,11 @@ final class CircularCountrySelectViewController: UIViewController {
         view.backgroundColor = .clear
         
         view.addSubview(circularContryButtonsView)
+        view.addSubview(closeButton)
         view.addSubview(selectButton)
         
         circularContryButtonsView.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
         selectButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -79,6 +89,9 @@ final class CircularCountrySelectViewController: UIViewController {
             circularContryButtonsView.heightAnchor.constraint(equalTo: view.heightAnchor),
             circularContryButtonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             circularContryButtonsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            closeButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             
             selectButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -30),
             selectButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -102,6 +115,13 @@ final class CircularCountrySelectViewController: UIViewController {
                     guard let self else { return }
                     self.delegate?.send(country: self.circularContryButtonsView.selectedCountry)
                     self.dismiss(animated: true)
+                },
+                for: .touchUpInside
+            )
+        closeButton
+            .addAction(
+                UIAction { [weak self] _ in
+                    self?.dismiss(animated: true)
                 },
                 for: .touchUpInside
             )
