@@ -105,7 +105,7 @@ final class CircularCountrySelectViewController: UIViewController {
             target: self,
             action: #selector(rotateAction(with:))
         )
-        view.addGestureRecognizer(panGesture)
+        circularContryButtonsView.addGestureRecognizer(panGesture)
     }
     
     private func configureButtons() {
