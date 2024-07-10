@@ -137,6 +137,12 @@ final class CircularCountrySelectViewController: UIViewController {
             action: #selector(rotateAction(with:))
         )
         circularContryButtonsView.addGestureRecognizer(panGesture)
+        
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(resignSearchField)
+        )
+        view.addGestureRecognizer(tapGesture)
     }
     
     private func configureButtons() {
@@ -174,4 +180,28 @@ final class CircularCountrySelectViewController: UIViewController {
             circularContryButtonsView.updateCheckmark()
         }
     }
+    
+    @objc private func resignSearchField() {
+        searchBar.resignFirstResponder()
+    }
+}
+
+extension CircularCountrySelectViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBarWidthConstraint.constant = 300
+        searchBackgroundView.isHidden = false
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBarWidthConstraint.constant = 50
+        searchBackgroundView.isHidden = true
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
+            self.view.layoutIfNeeded()
+        }
+    }
+}
+
 }
