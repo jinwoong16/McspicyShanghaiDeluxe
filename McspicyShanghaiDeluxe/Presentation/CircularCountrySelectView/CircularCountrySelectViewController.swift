@@ -104,7 +104,7 @@ final class CircularCountrySelectViewController: UIViewController {
     
     private func setupBlurEffect() {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        let blurEffectView = IntensityVisualEffectView(effect: blurEffect, intensity: 1)
         blurEffectView.frame = self.view.bounds
         self.view.addSubview(blurEffectView)
     }
