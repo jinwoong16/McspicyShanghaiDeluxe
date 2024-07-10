@@ -247,6 +247,21 @@ extension CircularCountrySelectViewController: UISearchBarDelegate {
     }
 }
 
+extension CircularCountrySelectViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        searchedCountries.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        var configuration = cell.defaultContentConfiguration()
+        configuration.text = searchedCountries[indexPath.row].name
+        configuration.textProperties.color = .white
+        cell.contentConfiguration = configuration
+        cell.backgroundColor = .clear
+        
+        return cell
+    }
 }
 
 }
