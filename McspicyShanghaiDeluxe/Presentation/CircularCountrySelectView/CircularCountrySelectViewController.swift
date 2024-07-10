@@ -198,6 +198,7 @@ extension CircularCountrySelectViewController: UISearchBarDelegate {
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         searchBarWidthConstraint.constant = 50
         searchBackgroundView.isHidden = true
+        searchBar.text = ""
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
             self.view.layoutIfNeeded()
         }
