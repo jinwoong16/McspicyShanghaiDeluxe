@@ -57,12 +57,24 @@ final class CircularCountrySelectViewController: UIViewController {
         return UIButton(configuration: configuration)
     }()
     
+    private lazy var searchResultHieghtConstraint = searchResultView.heightAnchor.constraint(equalToConstant: 0)
+    private lazy var searchResultView: UITableView = {
+        let searchResultView = UITableView()
+        searchResultView.backgroundColor = .darkGray
+        searchResultView.layer.cornerRadius = 10
+        searchResultView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        searchResultView.clipsToBounds = true
+        
+        return searchResultView
+    }()
+    
     private lazy var feedbackHandler: FeedbackHandler = {
         FeedbackHandler(targetView: view)
     }()
     
     private let countries: [Country]
     private var currentCountry: Country?
+    private var searchedCountries: [Country] = []
     var delegate: CountryReceivable?
     
     init(countries: [Country], currentCountry: Country? = nil) {
@@ -86,6 +98,8 @@ final class CircularCountrySelectViewController: UIViewController {
         configureButtons()
         
         searchBar.delegate = self
+        searchResultView.dataSource = self
+        searchResultView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     private func setupBlurEffect() {
@@ -101,14 +115,15 @@ final class CircularCountrySelectViewController: UIViewController {
         view.addSubview(circularContryButtonsView)
         view.addSubview(closeButton)
         view.addSubview(selectButton)
-        
         view.addSubview(searchBackgroundView)
         view.addSubview(searchBar)
+        view.addSubview(searchResultView)
         
         circularContryButtonsView.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         selectButton.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchResultView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             circularContryButtonsView.widthAnchor.constraint(equalTo: view.widthAnchor),
@@ -128,6 +143,11 @@ final class CircularCountrySelectViewController: UIViewController {
             selectButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             selectButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             selectButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            searchResultView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
+            searchResultView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            searchResultView.widthAnchor.constraint(equalToConstant: 300),
+            searchResultHieghtConstraint,
         ])
     }
     
@@ -162,6 +182,17 @@ final class CircularCountrySelectViewController: UIViewController {
                 },
                 for: .touchUpInside
             )
+    }
+    
+    private func updateSearchedResultViewHeight() {
+        let contentHeight = CGFloat(searchedCountries.count) * 44
+        let maxHeight = view.frame.height * 0.3
+        let newHeight = min(maxHeight, contentHeight)
+        searchResultHieghtConstraint.constant = newHeight
+        searchResultView.isScrollEnabled = contentHeight > maxHeight
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     @objc private func rotateAction(with gesture: UIPanGestureRecognizer) {
@@ -199,10 +230,23 @@ extension CircularCountrySelectViewController: UISearchBarDelegate {
         searchBarWidthConstraint.constant = 50
         searchBackgroundView.isHidden = true
         searchBar.text = ""
+        searchedCountries = []
+        updateSearchedResultViewHeight()
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
             self.view.layoutIfNeeded()
         }
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchedCountries = countries.filter { country in
+            country.currency.code.lowercased().contains(searchText.lowercased())
+        }
+        
+        searchResultView.reloadData()
+        updateSearchedResultViewHeight()
+    }
+}
+
 }
 
 }
