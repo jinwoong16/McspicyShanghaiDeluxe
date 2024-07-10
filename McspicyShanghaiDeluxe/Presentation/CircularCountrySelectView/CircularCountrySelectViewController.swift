@@ -134,7 +134,6 @@ final class CircularCountrySelectViewController: UIViewController {
             searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             searchBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             searchBarWidthConstraint,
-            searchBar.heightAnchor.constraint(equalToConstant: 50),
             
             closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             closeButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
