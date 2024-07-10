@@ -19,6 +19,17 @@ final class CircularCountrySelectViewController: UIViewController {
         frame: view.bounds
     )
     
+    private lazy var searchBarWidthConstraint = searchBar.widthAnchor.constraint(equalToConstant: 50)
+    private lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.searchBarStyle = .minimal
+        searchBar.searchTextField.textColor = .white
+        searchBar.searchTextField.backgroundColor = .darkGray
+        searchBar.searchTextField.leftView?.tintColor = .secondaryTextColor
+        
+        return searchBar
+    }()
+    
     private lazy var closeButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "xmark")
@@ -64,6 +75,8 @@ final class CircularCountrySelectViewController: UIViewController {
         configureUI()
         configureGesture()
         configureButtons()
+        
+        searchBar.delegate = self
     }
     
     private func setupBlurEffect() {
@@ -80,7 +93,10 @@ final class CircularCountrySelectViewController: UIViewController {
         view.addSubview(closeButton)
         view.addSubview(selectButton)
         
+        view.addSubview(searchBar)
+        
         circularContryButtonsView.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         selectButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -89,6 +105,11 @@ final class CircularCountrySelectViewController: UIViewController {
             circularContryButtonsView.heightAnchor.constraint(equalTo: view.heightAnchor),
             circularContryButtonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             circularContryButtonsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            searchBarWidthConstraint,
+            searchBar.heightAnchor.constraint(equalToConstant: 50),
             
             closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             closeButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
