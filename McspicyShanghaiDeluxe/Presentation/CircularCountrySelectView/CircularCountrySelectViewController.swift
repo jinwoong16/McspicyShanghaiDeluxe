@@ -19,6 +19,15 @@ final class CircularCountrySelectViewController: UIViewController {
         frame: view.bounds
     )
     
+    private lazy var searchBackgroundView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+        let searchBackgroundView = UIVisualEffectView(effect: blurEffect)
+        searchBackgroundView.frame = self.view.bounds
+        searchBackgroundView.isHidden = true
+        
+        return searchBackgroundView
+    }()
+    
     private lazy var searchBarWidthConstraint = searchBar.widthAnchor.constraint(equalToConstant: 50)
     private lazy var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
@@ -93,6 +102,7 @@ final class CircularCountrySelectViewController: UIViewController {
         view.addSubview(closeButton)
         view.addSubview(selectButton)
         
+        view.addSubview(searchBackgroundView)
         view.addSubview(searchBar)
         
         circularContryButtonsView.translatesAutoresizingMaskIntoConstraints = false
