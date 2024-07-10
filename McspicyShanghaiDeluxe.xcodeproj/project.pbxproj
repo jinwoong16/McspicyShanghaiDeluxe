@@ -487,7 +487,7 @@
 		83AD6DCD2C3A812100DF8D49 /* CircularCountrySelectView */ = {
 			isa = PBXGroup;
 			children = (
-				83F6CCDC2C3AFF3200932E25 /* Util */,
+				83F6CCDC2C3AFF3200932E25 /* Utils */,
 				83AD6DD02C3A821800DF8D49 /* Components */,
 				83AD6DCE2C3A815300DF8D49 /* CircularCountrySelectViewController.swift */,
 			);
@@ -503,13 +503,13 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		83F6CCDC2C3AFF3200932E25 /* Util */ = {
+		83F6CCDC2C3AFF3200932E25 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				83F6CCDD2C3AFF4400932E25 /* FeedbackHandler.swift */,
 				8368F07A2C3C5CF90079AA57 /* Array+.swift */,
 			);
-			path = Util;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
