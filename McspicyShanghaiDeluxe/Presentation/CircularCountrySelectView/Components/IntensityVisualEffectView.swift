@@ -23,10 +23,6 @@ final class IntensityVisualEffectView: UIVisualEffectView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        print("Deinit")
-    }
-    
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         
@@ -36,4 +32,3 @@ final class IntensityVisualEffectView: UIVisualEffectView {
         animator?.fractionComplete = intensity
     }
 }
-
