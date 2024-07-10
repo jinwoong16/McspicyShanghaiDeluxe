@@ -21,7 +21,7 @@ final class CircularCountrySelectViewController: UIViewController {
     
     private lazy var searchBackgroundView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
-        let searchBackgroundView = UIVisualEffectView(effect: blurEffect)
+        let searchBackgroundView = IntensityVisualEffectView(effect: blurEffect, intensity: 0.35)
         searchBackgroundView.frame = self.view.bounds
         searchBackgroundView.isHidden = true
         
