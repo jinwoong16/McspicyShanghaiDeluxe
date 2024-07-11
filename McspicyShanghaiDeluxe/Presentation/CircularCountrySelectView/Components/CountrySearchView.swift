@@ -53,6 +53,11 @@ final class CountrySearchView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+        let view = super.hitTest(point, with: event)
+        return view == self ? nil : view
+    }
+    
     private func configureUI() {
         addSubview(searchBackgroundView)
         addSubview(searchBar)
