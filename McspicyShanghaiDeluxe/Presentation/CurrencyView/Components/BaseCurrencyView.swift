@@ -145,12 +145,9 @@ extension BaseCurrencyTextField: UITextFieldDelegate {
             return false
         }
         
-        if let formattedNumber = filteredText.addThousandSeparators() {
-            textField.text = formattedNumber
-            print("formattedNumber: \(formattedNumber)")
-        } else if newText.isEmpty {
-            textField.text = ""
-        }
+        let formattedNumber = filteredText.addThousandSeparators()
+        textField.text = formattedNumber
+        print("formattedNumber: \(formattedNumber)")
         return false
     }
 }
