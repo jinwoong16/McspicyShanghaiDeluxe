@@ -214,11 +214,7 @@ extension CircularCountrySelectViewController: UITextFieldDelegate {
         countrySearchView.hideBackgroundView(true)
         countrySearchView.searchBar.text = ""
         searchedCountries = []
-        countrySearchView.updateSearchResultViewHeight(
-            by: searchedCountries.count,
-            maxHeight: view.frame.height * 0.3,
-            isFullRounded: searchedCountries.isEmpty
-        )
+        countrySearchView.updateSearchResultViewHeight()
     }
 }
 

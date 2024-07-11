@@ -85,6 +85,10 @@ final class CountrySearchView: UIView {
         case let .expanded(width):
             searchBarWidthConstraint.constant = width
         }
+        
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
+            self.layoutIfNeeded()
+        }
     }
     
     func hideBackgroundView(_ isOn: Bool) {
@@ -106,11 +110,19 @@ final class CountrySearchView: UIView {
         }
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
-            self.layoutIfNeeded()
+            if itemCount != 0 {
+                self.layoutIfNeeded()
+            }
         } completion: { _ in
             if isFullRounded {
                 self.searchBar.switchCornerRadius(by: false)
             }
         }
+    }
+    
+    func updateSearchResultViewHeight() {
+        searchResultHieghtConstraint.constant = 0
+        searchResultView.isScrollEnabled = false
+        searchBar.switchCornerRadius(by: false)
     }
 }
