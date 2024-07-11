@@ -8,7 +8,7 @@
 import Foundation
 
 extension String {
-    func addThousandSeparators() -> String? {
+    func addThousandSeparators() -> String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         numberFormatter.groupingSeparator = ","
@@ -18,7 +18,7 @@ extension String {
            let formattedNumber = numberFormatter.string(from: number) {
             return formattedNumber
         } else {
-            return nil
+            return self
         }
     }
 }

@@ -16,11 +16,16 @@ final class ConvertedAmountLabel: UIView {
     let fromLabel = UILabel() //에서
     let toLabel = UILabel() //(으)로
     let destinationBackground = UIView()
-
+    
+    var toAmountLabels: [UILabel] = []
+    var toAmountTopConstraints: [NSLayoutConstraint] = []
+    
+    private let calculator: BigmacCalculatable = BigmacCalculatorStub()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+        setupData()
     }
     
     required init?(coder: NSCoder) {
@@ -47,13 +52,6 @@ final class ConvertedAmountLabel: UIView {
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         toLabel.translatesAutoresizingMaskIntoConstraints = false
         destinationBackground.translatesAutoresizingMaskIntoConstraints = false
-        
-        destinationCountryButton.setTitle("🇺🇸 미국   ", for: .normal) //chevronRight때문에 눈속임으로..
-        destinationCountryButton.setTitleColor(.white, for: .normal)
-        destinationCountryButton.titleLabel?.font = UIFont.interExtraLight(ofSize: 16)
-        destinationCountryButton.backgroundColor = .destinationCountryButtonColor
-        destinationCountryButton.layer.cornerRadius = 5
-        destinationCountryButton.layer.masksToBounds = true
         
         chevronRight.image = UIImage(systemName: "chevron.right")
         chevronRight.tintColor = UIColor.secondaryTextColor
@@ -82,7 +80,7 @@ final class ConvertedAmountLabel: UIView {
             destinationCountryButton.topAnchor.constraint(equalTo: destinationBackground.topAnchor, constant: 20),
             
             chevronRight.centerYAnchor.constraint(equalTo: destinationCountryButton.centerYAnchor, constant: 0),
-            chevronRight.trailingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: -10),
+            chevronRight.leadingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: -10),
             
             fromLabel.leadingAnchor.constraint(equalTo: destinationCountryButton.trailingAnchor, constant: 10),
             fromLabel.bottomAnchor.constraint(equalTo: destinationCountryButton.bottomAnchor, constant: -8),
@@ -104,27 +102,109 @@ final class ConvertedAmountLabel: UIView {
             destinationBackground.heightAnchor.constraint(equalToConstant: 353),
         ])
     }
+    
+    private func setupData() {
+        let country = calculator.getAvailableCountries().first { $0.id == "USA" }!
+        let exchangeAmount = calculator.exchange(10000, to: country.id)
+        let bigmacCount = calculator.countBigmacs(with: exchangeAmount, countryId: country.id)
+        
+        destinationCountryButton.setTitle("\(country.flag) \(country.name)", for: .normal)
+        setuptoAmountLabels(with: "\(bigmacCount)")
+    }
+    
+    func setuptoAmountLabels(with text: String) {
+        let formattedText = text.addThousandSeparators()
+        let digits = Array(formattedText)
+        var previousLabel: UILabel? = nil
+        
+        var totalWidth: CGFloat = 0
+        var labelWidths: [CGFloat] = []
+        
+        for label in toAmountLabels {
+            label.removeFromSuperview()
+        }
+        toAmountLabels.removeAll()
+        toAmountTopConstraints.removeAll()
+        
+        for digit in digits {
+            let toAmountLabel = createtoAmountLabel(with: String(digit))
+            let labelWidth = toAmountLabel.intrinsicContentSize.width
+            labelWidths.append(labelWidth)
+            totalWidth += labelWidth + 5
+        }
+        
+        if !labelWidths.isEmpty {
+            totalWidth -= 5
+        }
+        
+        for (_, digit) in digits.enumerated() {
+            let toAmountLabel = createtoAmountLabel(with: String(digit))
+            addSubview(toAmountLabel)
+            
+            let toAmountTopConstraint = toAmountLabel.topAnchor.constraint(equalTo: convertedAmountSuffixLabel.topAnchor, constant: -30)
+            toAmountTopConstraints.append(toAmountTopConstraint)
+            toAmountLabels.append(toAmountLabel)
+            
+            var toAmountConstraints = [toAmountTopConstraint]
+            
+            if let previous = previousLabel {
+                toAmountConstraints.append(toAmountLabel.leadingAnchor.constraint(equalTo: previous.trailingAnchor, constant: 1))
+            } else {
+                toAmountConstraints.append(toAmountLabel.leadingAnchor.constraint(equalTo: convertedAmountSuffixLabel.leadingAnchor, constant: -totalWidth + 13))
+            }
+            
+            NSLayoutConstraint.activate(toAmountConstraints)
+            previousLabel = toAmountLabel
+        }
+        
+        if let lastLabel = toAmountLabels.last {
+            NSLayoutConstraint.activate([
+                lastLabel.trailingAnchor.constraint(equalTo: convertedAmountSuffixLabel.leadingAnchor, constant: -1)
+            ])
+        }
+        
+        for label in toAmountLabels {
+            bringSubviewToFront(label)
+        }
+        
+        bringSubviewToFront(convertedAmountSuffixLabel)
+        animateDigits()
+    }
+    
+    func createtoAmountLabel(with text: String) -> UILabel {
+        let toAmountLabel = UILabel()
+        toAmountLabel.translatesAutoresizingMaskIntoConstraints = false
+        toAmountLabel.text = text
+        toAmountLabel.font = UIFont.interLight(ofSize: 36)
+        toAmountLabel.textColor = .white
+        toAmountLabel.alpha = 0.0
+        return toAmountLabel
+    }
+    
+    func animateDigits() {
+        UIView.animate(withDuration: 0.5) {
+            for label in self.toAmountLabels {
+                label.alpha = 1.0
+            }
+        }
+    }
 }
 
 final class DestinationCountryButton: UIButton {
-    private var topInset: CGFloat = 3
-    private var leftInset: CGFloat = 15
-    private var rightInset: CGFloat = 15
-    private var bottomInset: CGFloat = 3
+    let country: UILabel = UILabel()
+    let chevron: UIImageView = UIImageView()
+    let CountryBoxButton: UIImageView = UIImageView()
     
-    override func draw(_ rect: CGRect) {
-        let insets = UIEdgeInsets(top: topInset, left: leftInset, bottom: bottomInset, right: rightInset)
-        super.draw(rect.inset(by: insets))
-    }
     
-    override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize
-        return CGSize(width: size.width + leftInset + rightInset,
-                      height: size.height + topInset + bottomInset)
-    }
+    //        destinationCountryButton.setTitle("🇺🇸 미국", for: .normal)
+    //        destinationCountryButton.setTitleColor(.white, for: .normal)
+    //        destinationCountryButton.titleLabel?.font = UIFont.interExtraLight(ofSize: 16)
+    //        destinationCountryButton.backgroundColor = .destinationCountryButtonColor
+    //        destinationCountryButton.layer.cornerRadius = 5
+    //        destinationCountryButton.layer.masksToBounds = true
 }
-
 
 #Preview {
     ConvertedAmountLabel()
 }
+
