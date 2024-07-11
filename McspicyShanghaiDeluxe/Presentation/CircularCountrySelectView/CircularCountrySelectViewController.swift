@@ -162,7 +162,10 @@ final class CircularCountrySelectViewController: UIViewController {
         countrySearchView.searchBar.delegate = self
         countrySearchView.searchResultView.dataSource = self
         countrySearchView.searchResultView.delegate = self
-        countrySearchView.searchResultView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        countrySearchView.searchResultView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: "cell"
+        )
         countrySearchView.searchBar.addAction(
             UIAction { [weak self] action in
                 guard let sender = action.sender as? SearchField,
