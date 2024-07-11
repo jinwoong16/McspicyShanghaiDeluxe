@@ -121,7 +121,7 @@ final class LandingViewController: UIViewController {
 }
 
 extension LandingViewController: CountryReceivable {
-    func send(country: Country) {
+    func receive(country: Country) {
         countryLabel.text = "\(country.flag) \(country.name)"
         currentCountry = country
     }
