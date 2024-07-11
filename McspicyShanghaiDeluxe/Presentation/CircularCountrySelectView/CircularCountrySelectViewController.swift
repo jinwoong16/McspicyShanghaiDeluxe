@@ -136,7 +136,7 @@ final class CircularCountrySelectViewController: UIViewController {
             target: self,
             action: #selector(resignSearchField)
         )
-        view.addGestureRecognizer(tapGesture)
+        countrySearchView.searchBackgroundView.addGestureRecognizer(tapGesture)
     }
     
     private func configureButtons() {

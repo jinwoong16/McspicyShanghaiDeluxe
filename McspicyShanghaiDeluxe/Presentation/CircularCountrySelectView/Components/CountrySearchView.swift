@@ -13,7 +13,7 @@ final class CountrySearchView: UIView {
         case expanded(CGFloat)
     }
     
-    private lazy var searchBackgroundView: UIVisualEffectView = {
+    private(set) lazy var searchBackgroundView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
         let searchBackgroundView = IntensityVisualEffectView(
             effect: blurEffect,
