@@ -63,6 +63,7 @@
 		83AD6DD42C3A875200DF8D49 /* CircularCountryButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83AD6DD32C3A875200DF8D49 /* CircularCountryButtonsView.swift */; };
 		83E27A522C3EFD94005E79CC /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E27A512C3EFD94005E79CC /* SearchField.swift */; };
 		83E27A542C3F7159005E79CC /* CountrySearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E27A532C3F7159005E79CC /* CountrySearchView.swift */; };
+		83E27A562C3F9DD7005E79CC /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83E27A552C3F9DD7005E79CC /* LandingViewController.swift */; };
 		83F6CCDE2C3AFF4400932E25 /* FeedbackHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F6CCDD2C3AFF4400932E25 /* FeedbackHandler.swift */; };
 /* End PBXBuildFile section */
 
@@ -141,6 +142,7 @@
 		83AD6DD32C3A875200DF8D49 /* CircularCountryButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularCountryButtonsView.swift; sourceTree = "<group>"; };
 		83E27A512C3EFD94005E79CC /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		83E27A532C3F7159005E79CC /* CountrySearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySearchView.swift; sourceTree = "<group>"; };
+		83E27A552C3F9DD7005E79CC /* LandingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		83F6CCDD2C3AFF4400932E25 /* FeedbackHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -496,6 +498,7 @@
 				83F6CCDC2C3AFF3200932E25 /* Utils */,
 				83AD6DD02C3A821800DF8D49 /* Components */,
 				83AD6DCE2C3A815300DF8D49 /* CircularCountrySelectViewController.swift */,
+				83E27A552C3F9DD7005E79CC /* LandingViewController.swift */,
 			);
 			path = CircularCountrySelectView;
 			sourceTree = "<group>";
@@ -680,6 +683,7 @@
 				8368F07B2C3C5CF90079AA57 /* Array+.swift in Sources */,
 				833D025D2C3424EC003A1FB2 /* ApiService.swift in Sources */,
 				83AD6DD42C3A875200DF8D49 /* CircularCountryButtonsView.swift in Sources */,
+				83E27A562C3F9DD7005E79CC /* LandingViewController.swift in Sources */,
 				836D5BF02C316C3C000C7DDA /* AppDelegate.swift in Sources */,
 				836D5C8F2C326F37000C7DDA /* BigmacIndex.swift in Sources */,
 				83980FDC2C365EED00C0CEB4 /* ModelStore.swift in Sources */,
