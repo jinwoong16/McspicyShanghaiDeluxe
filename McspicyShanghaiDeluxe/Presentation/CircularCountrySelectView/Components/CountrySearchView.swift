@@ -106,7 +106,7 @@ final class CountrySearchView: UIView {
         searchResultView.isScrollEnabled = contentHeight > maxHeight
         
         if !isFullRounded {
-            searchBar.switchCornerRadius(by: true)
+            searchBar.applyCornerRadius(to: .up)
         }
         
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
@@ -115,7 +115,7 @@ final class CountrySearchView: UIView {
             }
         } completion: { _ in
             if isFullRounded {
-                self.searchBar.switchCornerRadius(by: false)
+                self.searchBar.applyCornerRadius(to: .full)
             }
         }
     }
@@ -123,6 +123,6 @@ final class CountrySearchView: UIView {
     func updateSearchResultViewHeight() {
         searchResultHieghtConstraint.constant = 0
         searchResultView.isScrollEnabled = false
-        searchBar.switchCornerRadius(by: false)
+        searchBar.applyCornerRadius(to: .full)
     }
 }

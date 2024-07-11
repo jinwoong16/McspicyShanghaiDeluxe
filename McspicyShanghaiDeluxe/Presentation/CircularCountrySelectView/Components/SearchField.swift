@@ -33,7 +33,7 @@ final class SearchField: UITextField {
         super.init(frame: .zero)
         
         configureUI()
-        switchCornerRadius(by: false)
+        applyCornerRadius(to: .full)
     }
     
     required init?(coder: NSCoder) {
@@ -72,17 +72,27 @@ final class SearchField: UITextField {
         return contentSize.width + 20
     }
     
-    func switchCornerRadius(by isHighlighted: Bool) {
+    func applyCornerRadius(to direction: CornerDirection) {
         layer.cornerRadius = 10
-        if isHighlighted {
-            layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        } else {
-            layer.maskedCorners = [
-                .layerMinXMinYCorner,
-                .layerMaxXMinYCorner,
-                .layerMinXMaxYCorner,
-                .layerMaxXMaxYCorner
-            ]
+        layer.maskedCorners = direction.maskedCorner
+    }
+}
+
+extension SearchField {
+    enum CornerDirection {
+        case up
+        case down
+        case full
+        
+        var maskedCorner: CACornerMask {
+            switch self {
+            case .up:
+                return [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            case .down:
+                return [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            case .full:
+                return CACornerMask(arrayLiteral: [CornerDirection.up.maskedCorner, CornerDirection.down.maskedCorner])
+            }
         }
     }
 }
