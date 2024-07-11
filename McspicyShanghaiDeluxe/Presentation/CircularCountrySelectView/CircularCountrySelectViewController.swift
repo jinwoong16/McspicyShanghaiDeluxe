@@ -19,22 +19,6 @@ final class CircularCountrySelectViewController: UIViewController {
         frame: view.bounds
     )
     
-    private lazy var searchBackgroundView: UIVisualEffectView = {
-        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
-        let searchBackgroundView = IntensityVisualEffectView(effect: blurEffect, intensity: 0.35)
-        searchBackgroundView.frame = self.view.bounds
-        searchBackgroundView.isHidden = true
-        
-        return searchBackgroundView
-    }()
-    
-    private lazy var searchBarWidthConstraint = searchBar.widthAnchor.constraint(equalToConstant: searchBar.leftViewWidth())
-    private lazy var searchBar: SearchField = {
-        let searchBar = SearchField()
-        
-        return searchBar
-    }()
-    
     private lazy var closeButton: UIButton = {
         var configuration = UIButton.Configuration.plain()
         configuration.image = UIImage(systemName: "xmark")
@@ -53,15 +37,8 @@ final class CircularCountrySelectViewController: UIViewController {
         return UIButton(configuration: configuration)
     }()
     
-    private lazy var searchResultHieghtConstraint = searchResultView.heightAnchor.constraint(equalToConstant: 0)
-    private lazy var searchResultView: UITableView = {
-        let searchResultView = UITableView()
-        searchResultView.backgroundColor = .darkGray
-        searchResultView.layer.cornerRadius = 10
-        searchResultView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        searchResultView.clipsToBounds = true
-        
-        return searchResultView
+    private lazy var countrySearchView: CountrySearchView = {
+        CountrySearchView(frame: view.bounds)
     }()
     
     private lazy var feedbackHandler: FeedbackHandler = {
@@ -92,28 +69,19 @@ final class CircularCountrySelectViewController: UIViewController {
         configureUI()
         configureGesture()
         configureButtons()
-        
-        searchBar.delegate = self
-        searchResultView.dataSource = self
-        searchResultView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        searchBar.addAction(
-            UIAction { [weak self] action in
-                guard let sender = action.sender as? SearchField,
-                      let text = sender.text else {
-                    return
-                }
-                self?.searchCountries(with: text)
-            },
-            for: .editingChanged
-        )
+        configureCountrySearchView()
     }
     
     private func searchCountries(with searchText: String) {
         searchedCountries = countries.filter { country in
             country.currency.code.lowercased().contains(searchText.lowercased())
         }
-        searchResultView.reloadData()
-        updateSearchedResultViewHeight()
+        countrySearchView.searchResultView.reloadData()
+        countrySearchView.updateSearchResultViewHeight(
+            by: searchedCountries.count,
+            maxHeight: view.frame.height * 0.3,
+            isFullRounded: searchedCountries.isEmpty
+        )
     }
     
     private func setupBlurEffect() {
@@ -129,25 +97,18 @@ final class CircularCountrySelectViewController: UIViewController {
         view.addSubview(circularContryButtonsView)
         view.addSubview(closeButton)
         view.addSubview(selectButton)
-        view.addSubview(searchBackgroundView)
-        view.addSubview(searchBar)
-        view.addSubview(searchResultView)
+        view.addSubview(countrySearchView)
         
         circularContryButtonsView.translatesAutoresizingMaskIntoConstraints = false
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         selectButton.translatesAutoresizingMaskIntoConstraints = false
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
-        searchResultView.translatesAutoresizingMaskIntoConstraints = false
+        countrySearchView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             circularContryButtonsView.widthAnchor.constraint(equalTo: view.widthAnchor),
             circularContryButtonsView.heightAnchor.constraint(equalTo: view.heightAnchor),
             circularContryButtonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             circularContryButtonsView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            
-            searchBar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchBar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            searchBarWidthConstraint,
             
             closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             closeButton.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
@@ -157,10 +118,10 @@ final class CircularCountrySelectViewController: UIViewController {
             selectButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             selectButton.heightAnchor.constraint(equalToConstant: 50),
             
-            searchResultView.topAnchor.constraint(equalTo: searchBar.bottomAnchor),
-            searchResultView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            searchResultView.widthAnchor.constraint(equalToConstant: 300),
-            searchResultHieghtConstraint,
+            countrySearchView.topAnchor.constraint(equalTo: view.topAnchor),
+            countrySearchView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            countrySearchView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            countrySearchView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
     }
     
@@ -197,24 +158,20 @@ final class CircularCountrySelectViewController: UIViewController {
             )
     }
     
-    private func updateSearchedResultViewHeight() {
-        let contentHeight = CGFloat(searchedCountries.count) * 44
-        let maxHeight = view.frame.height * 0.3
-        let newHeight = min(maxHeight, contentHeight)
-        searchResultHieghtConstraint.constant = newHeight
-        searchResultView.isScrollEnabled = contentHeight > maxHeight
-        
-        if !searchedCountries.isEmpty {
-            searchBar.switchCornerRadius(by: true)
-        }
-        
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
-            self.view.layoutIfNeeded()
-        } completion: { _ in
-            if self.searchedCountries.isEmpty {
-                self.searchBar.switchCornerRadius(by: false)
-            }
-        }
+    private func configureCountrySearchView() {
+        countrySearchView.searchBar.delegate = self
+        countrySearchView.searchResultView.dataSource = self
+        countrySearchView.searchResultView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        countrySearchView.searchBar.addAction(
+            UIAction { [weak self] action in
+                guard let sender = action.sender as? SearchField,
+                      let text = sender.text else {
+                    return
+                }
+                self?.searchCountries(with: text)
+            },
+            for: .editingChanged
+        )
     }
     
     @objc private func rotateAction(with gesture: UIPanGestureRecognizer) {
@@ -235,58 +192,29 @@ final class CircularCountrySelectViewController: UIViewController {
     }
     
     @objc private func resignSearchField() {
-        searchBar.resignFirstResponder()
+        countrySearchView.searchBar.resignFirstResponder()
     }
 }
 
 extension CircularCountrySelectViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        searchBarWidthConstraint.constant = 300
-        searchBackgroundView.isHidden = false
+        countrySearchView.updateSearchBarWidth(to: .expanded(300))
+        countrySearchView.hideBackgroundView(false)
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
             self.view.layoutIfNeeded()
         }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        searchBarWidthConstraint.constant = searchBar.leftViewWidth()
-        searchBackgroundView.isHidden = true
-        searchBar.text = ""
+        countrySearchView.updateSearchBarWidth(to: .initial)
+        countrySearchView.hideBackgroundView(true)
+        countrySearchView.searchBar.text = ""
         searchedCountries = []
-        updateSearchedResultViewHeight()
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
-            self.view.layoutIfNeeded()
-        }
-    }
-}
-
-extension CircularCountrySelectViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBarWidthConstraint.constant = 300
-        searchBackgroundView.isHidden = false
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        searchBarWidthConstraint.constant = 50
-        searchBackgroundView.isHidden = true
-        searchBar.text = ""
-        searchedCountries = []
-        updateSearchedResultViewHeight()
-        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        searchedCountries = countries.filter { country in
-            country.currency.code.lowercased().contains(searchText.lowercased())
-        }
-        
-        searchResultView.reloadData()
-        updateSearchedResultViewHeight()
+        countrySearchView.updateSearchResultViewHeight(
+            by: searchedCountries.count,
+            maxHeight: view.frame.height * 0.3,
+            isFullRounded: searchedCountries.isEmpty
+        )
     }
 }
 
@@ -305,6 +233,4 @@ extension CircularCountrySelectViewController: UITableViewDataSource {
         
         return cell
     }
-}
-
 }
