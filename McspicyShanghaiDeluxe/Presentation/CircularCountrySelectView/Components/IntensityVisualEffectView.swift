@@ -25,7 +25,7 @@ final class IntensityVisualEffectView: UIVisualEffectView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        
+        animator?.stopAnimation(true)
         animator = UIViewPropertyAnimator(duration: 1, curve: .linear) { [weak self] in
             self?.effect = self?.targetEffect
         }
