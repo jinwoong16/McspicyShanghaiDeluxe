@@ -8,25 +8,11 @@
 import UIKit
 
 final class SearchField: UITextField {
-    private lazy var searchButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        
-        return button
-    }()
-    
     private lazy var searchIcon: UIImageView = {
         let searchIcon = UIImageView(image: UIImage(systemName: "magnifyingglass"))
         searchIcon.tintColor = .secondaryTextColor
         
         return searchIcon
-    }()
-    
-    private lazy var clearButton: UIButton = {
-        let button = UIButton()
-        button.setImage(UIImage(systemName: "xmark.circle"), for: .normal)
-        
-        return button
     }()
     
     init() {
