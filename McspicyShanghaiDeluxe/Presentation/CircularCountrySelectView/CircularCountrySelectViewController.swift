@@ -28,13 +28,9 @@ final class CircularCountrySelectViewController: UIViewController {
         return searchBackgroundView
     }()
     
-    private lazy var searchBarWidthConstraint = searchBar.widthAnchor.constraint(equalToConstant: 50)
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar()
-        searchBar.searchBarStyle = .minimal
-        searchBar.searchTextField.textColor = .white
-        searchBar.searchTextField.backgroundColor = .darkGray
-        searchBar.searchTextField.leftView?.tintColor = .secondaryTextColor
+    private lazy var searchBarWidthConstraint = searchBar.widthAnchor.constraint(equalToConstant: searchBar.leftViewWidth())
+    private lazy var searchBar: SearchField = {
+        let searchBar = SearchField()
         
         return searchBar
     }()
@@ -100,6 +96,24 @@ final class CircularCountrySelectViewController: UIViewController {
         searchBar.delegate = self
         searchResultView.dataSource = self
         searchResultView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        searchBar.addAction(
+            UIAction { [weak self] action in
+                guard let sender = action.sender as? SearchField,
+                      let text = sender.text else {
+                    return
+                }
+                self?.searchCountries(with: text)
+            },
+            for: .editingChanged
+        )
+    }
+    
+    private func searchCountries(with searchText: String) {
+        searchedCountries = countries.filter { country in
+            country.currency.code.lowercased().contains(searchText.lowercased())
+        }
+        searchResultView.reloadData()
+        updateSearchedResultViewHeight()
     }
     
     private func setupBlurEffect() {
@@ -189,8 +203,17 @@ final class CircularCountrySelectViewController: UIViewController {
         let newHeight = min(maxHeight, contentHeight)
         searchResultHieghtConstraint.constant = newHeight
         searchResultView.isScrollEnabled = contentHeight > maxHeight
+        
+        if !searchedCountries.isEmpty {
+            searchBar.switchCornerRadius(by: true)
+        }
+        
         UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
             self.view.layoutIfNeeded()
+        } completion: { _ in
+            if self.searchedCountries.isEmpty {
+                self.searchBar.switchCornerRadius(by: false)
+            }
         }
     }
     
@@ -213,6 +236,27 @@ final class CircularCountrySelectViewController: UIViewController {
     
     @objc private func resignSearchField() {
         searchBar.resignFirstResponder()
+    }
+}
+
+extension CircularCountrySelectViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        searchBarWidthConstraint.constant = 300
+        searchBackgroundView.isHidden = false
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        searchBarWidthConstraint.constant = searchBar.leftViewWidth()
+        searchBackgroundView.isHidden = true
+        searchBar.text = ""
+        searchedCountries = []
+        updateSearchedResultViewHeight()
+        UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: .zero) {
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
