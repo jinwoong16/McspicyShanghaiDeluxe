@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CountryReceivable: AnyObject {
-    func send(country: Country)
+    func receive(country: Country)
 }
 
 final class CircularCountrySelectViewController: UIViewController {
@@ -144,7 +144,7 @@ final class CircularCountrySelectViewController: UIViewController {
             .addAction(
                 UIAction { [weak self] _ in
                     guard let self else { return }
-                    self.delegate?.send(country: self.circularContryButtonsView.selectedCountry)
+                    self.delegate?.receive(country: self.circularContryButtonsView.selectedCountry)
                     self.dismiss(animated: true)
                 },
                 for: .touchUpInside
@@ -239,7 +239,7 @@ extension CircularCountrySelectViewController: UITableViewDataSource {
 
 extension CircularCountrySelectViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        delegate?.send(country: searchedCountries[indexPath.row])
+        delegate?.receive(country: searchedCountries[indexPath.row])
         dismiss(animated: true)
     }
 }
