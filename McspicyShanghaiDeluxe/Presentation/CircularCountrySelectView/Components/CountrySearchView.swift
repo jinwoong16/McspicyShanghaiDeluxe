@@ -39,6 +39,7 @@ final class CountrySearchView: UIView {
         searchResultView.layer.cornerRadius = 10
         searchResultView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
         searchResultView.clipsToBounds = true
+        searchResultView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         
         return searchResultView
     }()
