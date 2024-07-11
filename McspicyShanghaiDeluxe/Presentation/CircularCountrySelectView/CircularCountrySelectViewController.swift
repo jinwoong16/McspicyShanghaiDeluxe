@@ -161,6 +161,7 @@ final class CircularCountrySelectViewController: UIViewController {
     private func configureCountrySearchView() {
         countrySearchView.searchBar.delegate = self
         countrySearchView.searchResultView.dataSource = self
+        countrySearchView.searchResultView.delegate = self
         countrySearchView.searchResultView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         countrySearchView.searchBar.addAction(
             UIAction { [weak self] action in
@@ -230,7 +231,15 @@ extension CircularCountrySelectViewController: UITableViewDataSource {
         configuration.textProperties.color = .white
         cell.contentConfiguration = configuration
         cell.backgroundColor = .clear
+        cell.selectionStyle = .none
         
         return cell
+    }
+}
+
+extension CircularCountrySelectViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.send(country: searchedCountries[indexPath.row])
+        dismiss(animated: true)
     }
 }
