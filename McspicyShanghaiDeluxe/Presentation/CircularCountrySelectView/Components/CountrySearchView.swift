@@ -100,8 +100,8 @@ final class CountrySearchView: UIView {
         }
     }
     
-    func hideBackgroundView(_ isOn: Bool) {
-        searchBackgroundView.isHidden = isOn
+    func hideBackgroundView(_ isHidden: Bool) {
+        searchBackgroundView.isHidden = isHidden
     }
     
     func updateSearchResultViewHeight(
