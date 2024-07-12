@@ -127,3 +127,10 @@ final class CountrySearchView: UIView {
         searchBar.applyCornerRadius(to: .full)
     }
 }
+
+extension CountrySearchView {
+    enum SearchBarStatus {
+        case initial
+        case expanded(CGFloat)
+    }
+}
