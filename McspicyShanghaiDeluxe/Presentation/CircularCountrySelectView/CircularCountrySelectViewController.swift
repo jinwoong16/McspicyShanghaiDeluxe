@@ -243,4 +243,8 @@ extension CircularCountrySelectViewController: UITableViewDelegate {
         delegate?.receive(country: searchedCountries[indexPath.row])
         dismiss(animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        view.frame.height * 0.3 / 6
+    }
 }
