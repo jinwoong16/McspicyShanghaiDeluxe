@@ -8,11 +8,6 @@
 import UIKit
 
 final class CountrySearchView: UIView {
-    enum SearchBarStatus {
-        case initial
-        case expanded(CGFloat)
-    }
-    
     private(set) lazy var searchBackgroundView: UIVisualEffectView = {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
         let searchBackgroundView = IntensityVisualEffectView(
