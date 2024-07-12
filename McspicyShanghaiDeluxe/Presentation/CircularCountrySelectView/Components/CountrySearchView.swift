@@ -61,8 +61,8 @@ final class CountrySearchView: UIView {
     
     private func configureUI() {
         addSubview(searchBackgroundView)
-        addSubview(searchBar)
         addSubview(searchResultView)
+        addSubview(searchBar)
         
         searchBar.translatesAutoresizingMaskIntoConstraints = false
         searchResultView.translatesAutoresizingMaskIntoConstraints = false
