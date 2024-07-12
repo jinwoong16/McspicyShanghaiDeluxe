@@ -34,6 +34,7 @@ extension UIColor {
     static let unselectedIcon = UIColor(hex: "3E3C3E") // 선택되지 않은 아이콘 컬러
     static let searchBarColor = UIColor(hex: "646464") // 서큘러뷰 검색바 컬러
     static let addButton = UIColor(hex: "D6D6D6") // 서큘러뷰 변경하기 버튼
+    static let searchTextFieldBottomLine = UIColor(hex: "808080")
 }
 
 // 탭바 투명도와 블러값 적용
