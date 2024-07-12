@@ -77,6 +77,7 @@ final class CircularCountrySelectViewController: UIViewController {
             country.currency.code.lowercased().contains(searchText.lowercased())
         }
         countrySearchView.searchResultView.reloadData()
+        countrySearchView.searchBar.hideUnderline(searchedCountries.isEmpty)
         countrySearchView.updateSearchResultViewHeight(
             by: searchedCountries.count,
             maxHeight: view.frame.height * 0.3,
@@ -210,6 +211,7 @@ extension CircularCountrySelectViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        countrySearchView.searchBar.hideUnderline(true)
         countrySearchView.updateSearchBarWidth(to: .initial)
         countrySearchView.hideBackgroundView(true)
         countrySearchView.searchBar.text = ""

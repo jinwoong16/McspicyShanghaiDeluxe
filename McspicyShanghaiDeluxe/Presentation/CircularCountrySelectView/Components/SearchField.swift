@@ -15,6 +15,15 @@ final class SearchField: UITextField {
         return searchIcon
     }()
     
+    private lazy var underlineLayer: CALayer = {
+        let underlineLayer = CALayer()
+        underlineLayer.backgroundColor = UIColor.searchTextFieldBottomLine.cgColor
+        underlineLayer.frame = CGRectMake(0, 0, 0, 1)
+        underlineLayer.isHidden = true
+        
+        return underlineLayer
+    }()
+    
     init() {
         super.init(frame: .zero)
         
@@ -42,6 +51,13 @@ final class SearchField: UITextField {
         return rect.insetBy(dx: 10, dy: 10)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        underlineLayer.frame = CGRectMake(0, bounds.height, bounds.width, 1)
+            .insetBy(dx: 15, dy: 0)
+    }
+    
     private func configureUI() {
         backgroundColor = .darkGray
         
@@ -51,8 +67,10 @@ final class SearchField: UITextField {
         leftViewMode = .always
         
         clearButtonMode = .whileEditing
+        
+        layer.addSublayer(underlineLayer)
     }
-    
+
     func leftViewWidth() -> CGFloat {
         let contentSize = leftView?.intrinsicContentSize ?? .zero
         return contentSize.width + 20
@@ -61,6 +79,10 @@ final class SearchField: UITextField {
     func applyCornerRadius(to direction: CornerDirection) {
         layer.cornerRadius = 10
         layer.maskedCorners = direction.maskedCorner
+    }
+    
+    func hideUnderline(_ isHidden: Bool) {
+        underlineLayer.isHidden = isHidden
     }
 }
 
