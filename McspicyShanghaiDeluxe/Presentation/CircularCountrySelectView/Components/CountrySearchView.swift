@@ -25,14 +25,22 @@ final class CountrySearchView: UIView {
         return searchBackgroundView
     }()
     
-    private lazy var searchBarWidthConstraint = searchBar.widthAnchor.constraint(equalToConstant: searchBar.leftViewWidth())
+    private lazy var searchBarWidthConstraint = searchBar
+        .widthAnchor
+        .constraint(
+            equalToConstant: searchBar.leftViewWidth()
+        )
     private(set) lazy var searchBar: SearchField = {
         let searchBar = SearchField()
         
         return searchBar
     }()
     
-    private lazy var searchResultHieghtConstraint = searchResultView.heightAnchor.constraint(equalToConstant: 0)
+    private lazy var searchResultHieghtConstraint = searchResultView
+        .heightAnchor
+        .constraint(
+            equalToConstant: 0
+        )
     private(set) lazy var searchResultView: UITableView = {
         let searchResultView = UITableView()
         searchResultView.backgroundColor = .darkGray
