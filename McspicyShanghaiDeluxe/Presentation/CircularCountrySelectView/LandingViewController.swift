@@ -113,7 +113,7 @@ final class LandingViewController: UIViewController {
             .readyToUpdateUI()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
-                print("Ready...")
+                print("Stores are Ready...")
                 self?.view.isHidden = false
             }
             .store(in: &anyCancellables)
